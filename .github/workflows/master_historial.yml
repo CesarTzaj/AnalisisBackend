@@ -49,5 +49,5 @@ jobs:
         with:
           app-name: 'historial'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5FB4313267594A9BB740A06D9011AA9C }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5B6FE63AA3C84C7CB714C5580D52FC40 }}
           package: '*.jar'
