@@ -3,6 +3,7 @@ package com.historialclinico.historial.web.controller;
 
 import com.historialclinico.historial.domain.dto.PersonDTO;
 import com.historialclinico.historial.domain.service.PersonService;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,9 +27,9 @@ public class PersonController {
     public ResponseEntity<List<PersonDTO>> getAll(){
         return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
-    
-    @GetMapping("{id}")
-    public ResponseEntity<PersonDTO> getByDpi(@PathVariable("id") long dpi){
+    @ApiResponse(description = "hola mundo")
+    @GetMapping("{dpi}")
+    public ResponseEntity<PersonDTO> getByDpi(@PathVariable("dpi") long dpi){
     return service.getByDpi(dpi)
             .map(person -> new ResponseEntity<>(person, HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
