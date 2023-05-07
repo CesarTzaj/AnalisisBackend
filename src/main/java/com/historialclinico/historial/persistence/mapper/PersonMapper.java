@@ -21,6 +21,7 @@ public interface PersonMapper {
         @Mapping(source = "primerApellido", target = "lastName"),
         @Mapping(source = "segundoApellido", target = "secLastName"),
         @Mapping(source = "addresses", target = "addresses"),
+        
     })
     PersonDTO toPersonDTO(Person person);
     List<PersonDTO> toPersonDTOs(List<Person> person);

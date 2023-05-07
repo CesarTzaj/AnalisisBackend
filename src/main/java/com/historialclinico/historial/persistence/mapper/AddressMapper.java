@@ -16,12 +16,14 @@ public interface AddressMapper {
         @Mapping(source = "idDireccion", target = "id"),
         @Mapping(source = "direccion", target = "address"),
         @Mapping(source = "personaid", target = "personaId"),
-        })
+        
+    })
     AddressDTO toAddressDTO(Address address);
-
     List<AddressDTO> toAddresDTOs(List<Address> address);
 
     @InheritInverseConfiguration
-     @Mapping(target = "people", ignore = true)
+    @Mappings({
+        @Mapping(target = "people", ignore = true),
+    })
     Address toAddress(AddressDTO addressDTO);
 }

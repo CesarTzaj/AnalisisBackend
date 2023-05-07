@@ -61,7 +61,5 @@ public class Address {
     public void setPersonaid(Integer personaid) {
         this.personaid = personaid;
     }
-
-
-    
+   
 }
