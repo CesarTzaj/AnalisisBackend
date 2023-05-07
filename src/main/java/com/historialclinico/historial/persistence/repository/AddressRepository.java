@@ -7,6 +7,7 @@ import com.historialclinico.historial.persistence.crud.AddressCrudRepository;
 import com.historialclinico.historial.persistence.entity.Address;
 import com.historialclinico.historial.persistence.mapper.AddressMapper;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -30,6 +31,17 @@ public class AddressRepository implements AddressRepositoryDTO{
         Address address = addressMapper.toAddress(addressDTO);
         return addressMapper.toAddressDTO(addressCrudRepository.save(address));
     }
+    @Override
+    public Optional<AddressDTO> getAddressById(int id) {
+        return  addressCrudRepository.findById(id)
+                .map(address -> addressMapper.toAddressDTO(address));
+    }
+    @Override
+    public void delete(int id) {
+        addressCrudRepository.deleteById(id);
+    }
+
+    
   
     
     

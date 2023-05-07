@@ -27,6 +27,20 @@ public class PersonController {
         return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
     
+    @GetMapping("{id}")
+    public ResponseEntity<PersonDTO> getByDpi(@PathVariable("id") long dpi){
+    return service.getByDpi(dpi)
+            .map(person -> new ResponseEntity<>(person, HttpStatus.OK))
+            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }    
+    
+    @GetMapping("search/{id}")
+    public ResponseEntity<PersonDTO> search(@PathVariable("id") int id){
+    return service.getByPersonId(id)
+            .map(person -> new ResponseEntity<>(person, HttpStatus.OK))
+            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    } 
+    
     @PostMapping("save")
     public ResponseEntity<PersonDTO> save(@RequestBody PersonDTO personDTO){
     return  new ResponseEntity<>(service.save(personDTO), HttpStatus.CREATED);

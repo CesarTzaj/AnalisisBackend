@@ -54,4 +54,10 @@ public class PersonRepository implements PersonRepositoryDTO{
     public void delete(int id) {
         crud.deleteById(id);
     }
+
+    @Override
+    public Optional<PersonDTO> getByDpi(long id) {
+        return crud.findByDpi(id)
+                .map(person-> mapper.toPersonDTO(person));
+    }
 }

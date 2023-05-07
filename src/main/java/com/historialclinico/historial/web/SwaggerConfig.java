@@ -14,9 +14,9 @@ public class SwaggerConfig {
         return new OpenAPI()
                 .info(
                         new Info()
-                                .title("Api mucisa")
+                                .title("Historial clinico")
                                 .version("1.0.0")
-                                .description("Api de canciones")
+                                .description("Registro y verificacion de registro de un historial clinico")
                 );
 
     }

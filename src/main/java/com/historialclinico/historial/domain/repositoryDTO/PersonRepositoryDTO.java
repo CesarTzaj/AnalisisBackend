@@ -10,5 +10,6 @@ public interface PersonRepositoryDTO {
     List<PersonDTO> getAll();
     PersonDTO save(PersonDTO personDTO);
     Optional<PersonDTO> getByPeronId(int id);
+    Optional<PersonDTO> getByDpi(long id);
     void delete (int id);
 }

@@ -25,6 +25,10 @@ public class PersonService {
     public Optional<PersonDTO> getByPersonId(int id){
         return personRepositoryDTO.getByPeronId(id);
     }
+    
+    public Optional<PersonDTO> getByDpi(long dpi){
+        return personRepositoryDTO.getByDpi(dpi);
+    }
     public Boolean delete(int id){
         return getByPersonId(id)
                 .map(person ->{
