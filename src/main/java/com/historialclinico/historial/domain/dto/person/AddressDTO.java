@@ -1,12 +1,12 @@
 
-package com.historialclinico.historial.domain.dto;
+package com.historialclinico.historial.domain.dto.person;
 
 
 public class AddressDTO {
     
     private Integer id;
     private String address;
-    private int personId;
+    private long dpi;
 
     public Integer getId() {
         return id;
@@ -24,13 +24,11 @@ public class AddressDTO {
         this.address = address;
     }
 
-    public int getPersonaId() {
-        return personId;
+    public long getDpi() {
+        return dpi;
     }
 
-    public void setPersonaId(int personId) {
-        this.personId = personId;
+    public void setDpi(long dpi) {
+        this.dpi = dpi;
     }
-    
-
 }

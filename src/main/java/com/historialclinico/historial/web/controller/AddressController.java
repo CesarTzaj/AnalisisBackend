@@ -1,8 +1,8 @@
 
 package com.historialclinico.historial.web.controller;
 
-import com.historialclinico.historial.domain.dto.AddressDTO;
-import com.historialclinico.historial.domain.service.AddressService;
+import com.historialclinico.historial.domain.dto.person.AddressDTO;
+import com.historialclinico.historial.domain.service.person.AddressService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

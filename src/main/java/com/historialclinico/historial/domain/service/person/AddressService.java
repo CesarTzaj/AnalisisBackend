@@ -1,8 +1,8 @@
 
-package com.historialclinico.historial.domain.service;
+package com.historialclinico.historial.domain.service.person;
 
-import com.historialclinico.historial.domain.dto.AddressDTO;
-import com.historialclinico.historial.domain.repositoryDTO.AddressRepositoryDTO;
+import com.historialclinico.historial.domain.dto.person.AddressDTO;
+import com.historialclinico.historial.domain.repositoryDTO.person.AddressRepositoryDTO;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;

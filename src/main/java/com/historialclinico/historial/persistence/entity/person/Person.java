@@ -1,6 +1,7 @@
 
-package com.historialclinico.historial.persistence.entity;
+package com.historialclinico.historial.persistence.entity.person;
 
+import com.historialclinico.historial.persistence.entity.person.Address;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,12 +17,12 @@ import java.util.List;
 @Table(name = "persona")
 public class Person {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idpersona")
-    private Integer idPersona;
+    private long dpi;
+    
     private String genero;
+    
     private Integer edad;
-    private double dpi;
+    
     
     @Column(name = "primer_nombre")
     private String primerNombre;
@@ -35,15 +36,22 @@ public class Person {
     @Column(name = "sapellido")
     private String segundoApellido;
     
-    @OneToMany(mappedBy = "people")    
+    @OneToMany(mappedBy = "person")    
     private List<Address> addresses;
+    
+    @OneToMany(mappedBy = "person")
+    private List<Email> emails;
 
-    public Integer getIdPersona() {
-        return idPersona;
+    
+    @OneToMany(mappedBy = "person")
+    private List<PhoneNumber> phoneNumbers;
+
+    public long getDpi() {
+        return dpi;
     }
 
-    public void setIdPersona(Integer idPersona) {
-        this.idPersona = idPersona;
+    public void setDpi(long dpi) {
+        this.dpi = dpi;
     }
 
     public String getGenero() {
@@ -60,14 +68,6 @@ public class Person {
 
     public void setEdad(Integer edad) {
         this.edad = edad;
-    }
-
-    public double getDpi() {
-        return dpi;
-    }
-
-    public void setDpi(double dpi) {
-        this.dpi = dpi;
     }
 
     public String getPrimerNombre() {
@@ -110,6 +110,20 @@ public class Person {
         this.addresses = addresses;
     }
 
-    
-    
+    public List<Email> getEmails() {
+        return emails;
+    }
+
+    public void setEmails(List<Email> emails) {
+        this.emails = emails;
+    }
+
+    public List<PhoneNumber> getPhoneNumbers() {
+        return phoneNumbers;
+    }
+
+    public void setPhoneNumbers(List<PhoneNumber> phoneNumbers) {
+        this.phoneNumbers = phoneNumbers;
+    }
+  
 }

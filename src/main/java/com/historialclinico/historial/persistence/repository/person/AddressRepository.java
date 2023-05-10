@@ -1,11 +1,11 @@
 
-package com.historialclinico.historial.persistence.repository;
+package com.historialclinico.historial.persistence.repository.person;
 
-import com.historialclinico.historial.domain.dto.AddressDTO;
-import com.historialclinico.historial.domain.repositoryDTO.AddressRepositoryDTO;
-import com.historialclinico.historial.persistence.crud.AddressCrudRepository;
-import com.historialclinico.historial.persistence.entity.Address;
-import com.historialclinico.historial.persistence.mapper.AddressMapper;
+import com.historialclinico.historial.domain.dto.person.AddressDTO;
+import com.historialclinico.historial.domain.repositoryDTO.person.AddressRepositoryDTO;
+import com.historialclinico.historial.persistence.crud.person.AddressCrudRepository;
+import com.historialclinico.historial.persistence.entity.person.Address;
+import com.historialclinico.historial.persistence.mapper.person.AddressMapper;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;

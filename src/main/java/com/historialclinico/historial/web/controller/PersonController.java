@@ -1,8 +1,8 @@
 
 package com.historialclinico.historial.web.controller;
 
-import com.historialclinico.historial.domain.dto.PersonDTO;
-import com.historialclinico.historial.domain.service.PersonService;
+import com.historialclinico.historial.domain.dto.person.PersonDTO;
+import com.historialclinico.historial.domain.service.person.PersonService;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,28 +27,21 @@ public class PersonController {
     public ResponseEntity<List<PersonDTO>> getAll(){
         return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
-    @ApiResponse(description = "hola mundo")
+
     @GetMapping("{dpi}")
     public ResponseEntity<PersonDTO> getByDpi(@PathVariable("dpi") long dpi){
     return service.getByDpi(dpi)
             .map(person -> new ResponseEntity<>(person, HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }    
-    
-    @GetMapping("search/{id}")
-    public ResponseEntity<PersonDTO> search(@PathVariable("id") int id){
-    return service.getByPersonId(id)
-            .map(person -> new ResponseEntity<>(person, HttpStatus.OK))
-            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
-    } 
-    
+        
     @PostMapping("save")
     public ResponseEntity<PersonDTO> save(@RequestBody PersonDTO personDTO){
     return  new ResponseEntity<>(service.save(personDTO), HttpStatus.CREATED);
     }
     
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity delete(@PathVariable("id") int id){
+    public ResponseEntity delete(@PathVariable("id") long id){
         if(service.delete(id)){
             return new ResponseEntity( HttpStatus.OK);
         }else{

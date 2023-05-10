@@ -1,5 +1,5 @@
 
-package com.historialclinico.historial.persistence.entity;
+package com.historialclinico.historial.persistence.entity.person;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -24,11 +24,11 @@ public class Address {
     @Column(name = "direccion")
     private String direccion;
     @Column(name = "personaid")
-    private Integer personaid;
+    private long dpi;
 
     @ManyToOne
     @JoinColumn(name = "personaid", insertable = false, updatable = false)
-    private Person people;
+    private Person person;
     
     public Integer getIdDireccion() {
         return idDireccion;
@@ -46,20 +46,22 @@ public class Address {
         this.direccion = direccion;
     }
 
-    public Person getPeople() {
-        return people;
+    public Person getPerson() {
+        return person;
     }
 
-    public void setPeople(Person people) {
-        this.people = people;
+    public void setPerson(Person person) {
+        this.person = person;
     }
 
-    public Integer getPersonaid() {
-        return personaid;
+    public long getDpi() {
+        return dpi;
     }
 
-    public void setPersonaid(Integer personaid) {
-        this.personaid = personaid;
+    public void setDpi(long dpi) {
+        this.dpi = dpi;
     }
+
+ 
    
 }

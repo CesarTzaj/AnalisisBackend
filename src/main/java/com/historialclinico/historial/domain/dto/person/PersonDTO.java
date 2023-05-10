@@ -1,26 +1,27 @@
 
-package com.historialclinico.historial.domain.dto;
+package com.historialclinico.historial.domain.dto.person;
 
+import com.historialclinico.historial.domain.dto.person.AddressDTO;
 import java.util.List;
 
 
 public class PersonDTO {
-    private Integer id;
+    private long dpi;
     private String gender;
     private Integer age;
-    private double dpi;
     private String firstName;
     private String middleName;
     private String lastName;
     private String secLastName;
     private List<AddressDTO> addresses;
-
-    public Integer getId() {
-        return id;
+    private List<EmailDTO> emails;
+    private List<PhoneNumberDTO> phoneNumbers;
+    public long getDpi() {
+        return dpi;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setDpi(long dpi) {
+        this.dpi = dpi;
     }
 
     public String getGender() {
@@ -37,14 +38,6 @@ public class PersonDTO {
 
     public void setAge(Integer age) {
         this.age = age;
-    }
-
-    public double getDpi() {
-        return dpi;
-    }
-
-    public void setDpi(double dpi) {
-        this.dpi = dpi;
     }
 
     public String getFirstName() {
@@ -87,5 +80,21 @@ public class PersonDTO {
         this.addresses = addresses;
     }
 
- 
+    public List<EmailDTO> getEmails() {
+        return emails;
+    }
+
+    public void setEmails(List<EmailDTO> emails) {
+        this.emails = emails;
+    }
+
+    public List<PhoneNumberDTO> getPhoneNumbers() {
+        return phoneNumbers;
+    }
+
+    public void setPhoneNumbers(List<PhoneNumberDTO> phoneNumbers) {
+        this.phoneNumbers = phoneNumbers;
+    }
+
+   
 }

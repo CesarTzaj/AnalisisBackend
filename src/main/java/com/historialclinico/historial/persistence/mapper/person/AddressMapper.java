@@ -1,9 +1,8 @@
-package com.historialclinico.historial.persistence.mapper;
+package com.historialclinico.historial.persistence.mapper.person;
 
-import com.historialclinico.historial.domain.dto.AddressDTO;
-import com.historialclinico.historial.persistence.entity.Address;
+import com.historialclinico.historial.domain.dto.person.AddressDTO;
+import com.historialclinico.historial.persistence.entity.person.Address;
 import java.util.List;
-import org.mapstruct.InheritConfiguration;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -15,7 +14,7 @@ public interface AddressMapper {
     @Mappings({
         @Mapping(source = "idDireccion", target = "id"),
         @Mapping(source = "direccion", target = "address"),
-        @Mapping(source = "personaid", target = "personaId"),
+        @Mapping(source = "dpi", target = "dpi"),
         
     })
     AddressDTO toAddressDTO(Address address);
@@ -23,7 +22,7 @@ public interface AddressMapper {
 
     @InheritInverseConfiguration
     @Mappings({
-        @Mapping(target = "people", ignore = true),
+        @Mapping(target = "person", ignore = true),
     })
     Address toAddress(AddressDTO addressDTO);
 }
