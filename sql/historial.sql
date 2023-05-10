@@ -23,7 +23,7 @@ SET @@SESSION.SQL_LOG_BIN= 0;
 -- GTID state at the beginning of the backup 
 --
 
---- Se comento porque hay un error si se ejecuta sin comentar esta lineas
+-- Se comento porque hay un error si se ejecuta sin comentar esta lineas
 -- SET @@GLOBAL.GTID_PURGED=/*!80000 '+'*/ 'a05a675a-1414-11e9-9c82-cecd01b08c7e:1-491550428,
 -- a38a16d0-767a-11eb-abe2-cecd029e558e:1-250900694';
 
