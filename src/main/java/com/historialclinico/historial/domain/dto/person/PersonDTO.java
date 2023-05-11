@@ -1,7 +1,7 @@
 
 package com.historialclinico.historial.domain.dto.person;
 
-import com.historialclinico.historial.domain.dto.person.AddressDTO;
+import com.historialclinico.historial.domain.dto.MedicalRecord.MedicalRecordDTO;
 import java.util.List;
 
 
@@ -16,6 +16,8 @@ public class PersonDTO {
     private List<AddressDTO> addresses;
     private List<EmailDTO> emails;
     private List<PhoneNumberDTO> phoneNumbers;
+    private MedicalRecordDTO medicalRecordDTO;
+
     public long getDpi() {
         return dpi;
     }
@@ -96,5 +98,11 @@ public class PersonDTO {
         this.phoneNumbers = phoneNumbers;
     }
 
-   
+    public MedicalRecordDTO getMedicalRecordDTO() {
+        return medicalRecordDTO;
+    }
+
+    public void setMedicalRecordDTO(MedicalRecordDTO medicalRecordDTO) {
+        this.medicalRecordDTO = medicalRecordDTO;
+    }
 }

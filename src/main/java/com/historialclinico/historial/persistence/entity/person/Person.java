@@ -1,15 +1,12 @@
 
 package com.historialclinico.historial.persistence.entity.person;
 
-import com.historialclinico.historial.persistence.entity.person.Address;
+import com.historialclinico.historial.persistence.entity.MedicalRecord.MedicalRecord;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.util.List;
 
@@ -45,6 +42,9 @@ public class Person {
     
     @OneToMany(mappedBy = "person")
     private List<PhoneNumber> phoneNumbers;
+    
+    @OneToOne(mappedBy = "person")
+    private MedicalRecord medicalRecord;
 
     public long getDpi() {
         return dpi;
@@ -125,5 +125,13 @@ public class Person {
     public void setPhoneNumbers(List<PhoneNumber> phoneNumbers) {
         this.phoneNumbers = phoneNumbers;
     }
-  
+
+    public MedicalRecord getMedicalRecord() {
+        return medicalRecord;
+    }
+
+    public void setMedicalRecord(MedicalRecord medicalRecord) {
+        this.medicalRecord = medicalRecord;
+    }
+    
 }

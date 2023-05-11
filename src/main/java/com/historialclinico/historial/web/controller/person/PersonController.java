@@ -1,5 +1,5 @@
 
-package com.historialclinico.historial.web.controller;
+package com.historialclinico.historial.web.controller.person;
 
 import com.historialclinico.historial.domain.dto.person.PersonDTO;
 import com.historialclinico.historial.domain.service.person.PersonService;
