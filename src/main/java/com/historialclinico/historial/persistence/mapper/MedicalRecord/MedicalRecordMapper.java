@@ -9,14 +9,16 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
-@Mapper(componentModel = "spring", uses = {  BloodTypeMapper.class})
+@Mapper(componentModel = "spring", uses = {  BloodTypeMapper.class, AppointmentMapper.class })
 public interface MedicalRecordMapper {
     
     @Mappings({
-        @Mapping(source = "bloodType", target = "bloodTypeDTO")
+        @Mapping(source = "bloodType", target = "bloodTypeDTO"),
+        @Mapping(source = "appointments", target = "appointmentDTOs")
      //   @Mapping(source = "person", target = "personDTO")
     })
     MedicalRecordDTO toMedicalRecordDTO(MedicalRecord medicalRecord);
     
     
 }
+

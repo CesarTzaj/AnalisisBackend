@@ -1,6 +1,7 @@
 package com.historialclinico.historial.domain.dto.MedicalRecord;
 
 import com.historialclinico.historial.domain.dto.person.PersonDTO;
+import java.util.List;
 
 public class MedicalRecordDTO {
 
@@ -9,7 +10,8 @@ public class MedicalRecordDTO {
     private String hight;
     private String weight;
     private long personid;    
-    private BloodTypeDTO bloodTypeDTO;    
+    private BloodTypeDTO bloodTypeDTO; 
+    List<AppointmentDTO> appointmentDTOs;
    // private PersonDTO personDTO;
 
     public Integer getId() {
@@ -58,6 +60,14 @@ public class MedicalRecordDTO {
 
     public void setBloodTypeDTO(BloodTypeDTO bloodTypeDTO) {
         this.bloodTypeDTO = bloodTypeDTO;
+    }
+
+    public List<AppointmentDTO> getAppointmentDTOs() {
+        return appointmentDTOs;
+    }
+
+    public void setAppointmentDTOs(List<AppointmentDTO> appointmentDTOs) {
+        this.appointmentDTOs = appointmentDTOs;
     }
 
     

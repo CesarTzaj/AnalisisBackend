@@ -7,8 +7,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import java.util.List;
 
 @Entity
 @Table(name = "expediente")
@@ -38,6 +40,9 @@ public class MedicalRecord {
     @OneToOne
     @JoinColumn(name = "personaid", updatable = false, insertable = false)
     private Person person;
+    
+    @OneToMany(mappedBy = "medicalRecord")
+    private List<Appointment> appointments;
 
     public Integer getId() {
         return id;
@@ -95,4 +100,15 @@ public class MedicalRecord {
         this.bloodType = bloodType;
     }
 
+    public List<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(List<Appointment> appointments) {
+        this.appointments = appointments;
+    }
+
+
+    
+    
 }
