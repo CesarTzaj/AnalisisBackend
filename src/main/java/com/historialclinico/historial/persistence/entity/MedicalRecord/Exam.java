@@ -10,23 +10,19 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
-
-
 @Entity
-@Table(name = "receta")
-public class Prescription {
+@Table(name = "laboratorio")
+public class Exam {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "recetaid")
+    @Column(name = "laboratorioid")
     private Integer id;
     
-    @Column(name = "medicamentos")
-    private String drug; 
-    @Column(name = "dosis")
-    private String dosage;
+    @Column(name = "tipo_laboratorio")
+    private String examType;
     
-    @Column(name = "consultaid")
+    @Column(name = "consultaid", nullable = false )
     private Integer consultaId;
     
     @ManyToOne
@@ -41,20 +37,12 @@ public class Prescription {
         this.id = id;
     }
 
-    public String getDrug() {
-        return drug;
+    public String getExamType() {
+        return examType;
     }
 
-    public void setDrug(String drug) {
-        this.drug = drug;
-    }
-
-    public String getDosage() {
-        return dosage;
-    }
-
-    public void setDosage(String dosage) {
-        this.dosage = dosage;
+    public void setExamType(String examType) {
+        this.examType = examType;
     }
 
     public Integer getConsultaId() {
@@ -72,5 +60,6 @@ public class Prescription {
     public void setConsult(Consult consult) {
         this.consult = consult;
     }
+    
     
 }

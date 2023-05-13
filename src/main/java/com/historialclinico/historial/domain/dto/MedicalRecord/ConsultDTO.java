@@ -2,6 +2,7 @@
 package com.historialclinico.historial.domain.dto.MedicalRecord;
 
 import com.historialclinico.historial.domain.dto.doctor.DoctorDTO;
+import java.util.List;
 
 public class ConsultDTO {
     
@@ -10,9 +11,10 @@ public class ConsultDTO {
     private String time;
     private Integer citaId;
     private Integer doctorId;
+    private List<PrescriptionDTO> prescriptions;
+    private List<ExamDTO> exams;
    // private DoctorDTO doctor;
-  //  private AppointmentDTO appointment;
-
+    
     public Integer getId() {
         return id;
     }
@@ -52,15 +54,29 @@ public class ConsultDTO {
     public void setDoctorId(Integer doctorId) {
         this.doctorId = doctorId;
     }
+
+    public List<PrescriptionDTO> getPrescriptions() {
+        return prescriptions;
+    }
+
+    public void setPrescriptions(List<PrescriptionDTO> prescriptions) {
+        this.prescriptions = prescriptions;
+    }
+
+    public List<ExamDTO> getExams() {
+        return exams;
+    }
+
+    public void setExams(List<ExamDTO> exams) {
+        this.exams = exams;
+    }
 /*
-    public AppointmentDTO getAppointment() {
-        return appointment;
+    public DoctorDTO getDoctor() {
+        return doctor;
     }
 
-    public void setAppointment(AppointmentDTO appointment) {
-        this.appointment = appointment;
+    public void setDoctor(DoctorDTO doctor) {
+        this.doctor = doctor;
     }
-
-   */
-    
+ */
 }

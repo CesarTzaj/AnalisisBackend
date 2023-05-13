@@ -9,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.util.List;
 
 @Entity
 @Table(name = "doctor")
@@ -23,9 +24,9 @@ public class Doctor {
    private String turno;
    private String cargo;
    private String especialidad;
-  /* 
+  /*
    @OneToMany(mappedBy = "doctor")
-   private ConsultDTO consult;
+   private List<ConsultDTO> consult;
    */
     public Integer getId() {
         return id;
@@ -67,12 +68,14 @@ public class Doctor {
         this.especialidad = especialidad;
     }
 /*
-    public ConsultDTO getConsult() {
+    public List<ConsultDTO> getConsult() {
         return consult;
     }
 
-    public void setConsult(ConsultDTO consult) {
+    public void setConsult(List<ConsultDTO> consult) {
         this.consult = consult;
     }
-   */
+
+*/
+   
 }

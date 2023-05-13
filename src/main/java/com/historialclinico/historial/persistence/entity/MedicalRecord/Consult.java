@@ -9,7 +9,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.util.List;
 
 @Entity
 @Table(name = "consulta")
@@ -36,6 +38,16 @@ public class Consult {
     @JoinColumn(name = "citaid", insertable = false, updatable = false)
     private Appointment appointment;
 
+    @OneToMany(mappedBy = "consult")
+    private List<Prescription> prescriptions;
+            
+    @OneToMany(mappedBy = "consult")
+    private List<Exam> exams;
+  /*  
+    @ManyToOne
+    @JoinColumn(name = "doctorid", insertable = false, updatable = false)
+    private Doctor doctor;
+    */
     public Integer getId() {
         return id;
     }
@@ -83,5 +95,31 @@ public class Consult {
     public void setAppointment(Appointment appointment) {
         this.appointment = appointment;
     }
+
+    public List<Prescription> getPrescriptions() {
+        return prescriptions;
+    }
+
+    public void setPrescriptions(List<Prescription> prescriptions) {
+        this.prescriptions = prescriptions;
+    }
+
+    public List<Exam> getExams() {
+        return exams;
+    }
+
+    public void setExams(List<Exam> exams) {
+        this.exams = exams;
+    }
+/*
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+
+*/
     
 }
