@@ -1,4 +1,4 @@
-package com.historialclinico.historial.domain.dto.MedicalRecord;
+package com.historialclinico.historial.domain.dto.medicalRecord;
 
 public class ExamDTO {
 

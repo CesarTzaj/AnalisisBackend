@@ -1,10 +1,11 @@
-
 package com.historialclinico.historial.persistence.entity.person;
 
-import com.historialclinico.historial.persistence.entity.MedicalRecord.MedicalRecord;
+import com.historialclinico.historial.persistence.entity.medicalRecord.Appointment;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -13,38 +14,49 @@ import java.util.List;
 @Entity
 @Table(name = "persona")
 public class Person {
+
     @Id
     private long dpi;
-    
-    private String genero;
-    
+
+    @Column(name = "generoid")
+    private Integer genero;
+
     private Integer edad;
-    
-    
+
     @Column(name = "primer_nombre")
     private String primerNombre;
-    
+
     @Column(name = "segundo_nombre")
     private String segundoNombre;
-    
+
     @Column(name = "primer_apellido")
     private String primerApellido;
-    
+
     @Column(name = "sapellido")
     private String segundoApellido;
-    
-    @OneToMany(mappedBy = "person")    
+
+    @OneToMany(mappedBy = "person")
     private List<Address> addresses;
-    
+
     @OneToMany(mappedBy = "person")
     private List<Email> emails;
 
-    
     @OneToMany(mappedBy = "person")
     private List<PhoneNumber> phoneNumbers;
-    
-    @OneToOne(mappedBy = "person")
-    private MedicalRecord medicalRecord;
+
+    @OneToMany(mappedBy = "person")
+    private List<Appointment> appointments;
+
+    @Column(name = "paciente")
+    private boolean patient;
+
+    @ManyToOne
+    @JoinColumn(name = "bloodid", insertable = false, updatable = false)
+    private BloodType bloodType;
+
+    @ManyToOne
+    @JoinColumn(name = "generoid", insertable = false, updatable = false)
+    private Genre genre;
 
     public long getDpi() {
         return dpi;
@@ -54,11 +66,11 @@ public class Person {
         this.dpi = dpi;
     }
 
-    public String getGenero() {
+    public Integer getGenero() {
         return genero;
     }
 
-    public void setGenero(String genero) {
+    public void setGenero(Integer genero) {
         this.genero = genero;
     }
 
@@ -126,12 +138,36 @@ public class Person {
         this.phoneNumbers = phoneNumbers;
     }
 
-    public MedicalRecord getMedicalRecord() {
-        return medicalRecord;
+    public List<Appointment> getAppointments() {
+        return appointments;
     }
 
-    public void setMedicalRecord(MedicalRecord medicalRecord) {
-        this.medicalRecord = medicalRecord;
+    public void setAppointments(List<Appointment> appointments) {
+        this.appointments = appointments;
     }
-    
+
+    public BloodType getBloodType() {
+        return bloodType;
+    }
+
+    public void setBloodType(BloodType bloodType) {
+        this.bloodType = bloodType;
+    }
+
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
+
+    public boolean isPatient() {
+        return patient;
+    }
+
+    public void setPatient(boolean patient) {
+        this.patient = patient;
+    }
+
 }

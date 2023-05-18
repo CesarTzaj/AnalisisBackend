@@ -1,5 +1,5 @@
 
-package com.historialclinico.historial.persistence.entity.MedicalRecord;
+package com.historialclinico.historial.persistence.entity.medicalRecord;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

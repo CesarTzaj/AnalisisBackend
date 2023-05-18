@@ -1,7 +1,7 @@
 
 package com.historialclinico.historial.persistence.entity.doctor;
 
-import com.historialclinico.historial.domain.dto.MedicalRecord.ConsultDTO;
+import com.historialclinico.historial.domain.dto.medicalRecord.ConsultDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

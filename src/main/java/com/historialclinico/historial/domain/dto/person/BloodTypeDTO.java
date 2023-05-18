@@ -1,11 +1,10 @@
 
-package com.historialclinico.historial.domain.dto.MedicalRecord;
+package com.historialclinico.historial.domain.dto.person;
 
 
 public class BloodTypeDTO {
 
-    private Integer id;
-   
+    private Integer id;   
     private String blood;  
 
     public Integer getId() {

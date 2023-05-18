@@ -1,5 +1,5 @@
 
-package com.historialclinico.historial.domain.dto.MedicalRecord;
+package com.historialclinico.historial.domain.dto.medicalRecord;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ public class AppointmentDTO {
     private Integer id;
     private String date;
     private String time;
-    private Integer medicalRecordId;
+    private long personaId;
     private List<ConsultDTO> consults;
 
     public Integer getId() {
@@ -36,12 +36,12 @@ public class AppointmentDTO {
         this.time = time;
     }
 
-    public Integer getMedicalRecordId() {
-        return medicalRecordId;
+    public long getPersonaId() {
+        return personaId;
     }
 
-    public void setMedicalRecordId(Integer medicalRecordId) {
-        this.medicalRecordId = medicalRecordId;
+    public void setPersonaId(long personaId) {
+        this.personaId = personaId;
     }
 
     public List<ConsultDTO> getConsults() {
@@ -51,6 +51,8 @@ public class AppointmentDTO {
     public void setConsults(List<ConsultDTO> consults) {
         this.consults = consults;
     }
+
+
 
     
 }

@@ -1,5 +1,5 @@
 
-package com.historialclinico.historial.persistence.entity.MedicalRecord;
+package com.historialclinico.historial.persistence.entity.medicalRecord;
 
 import com.historialclinico.historial.persistence.entity.doctor.Doctor;
 import jakarta.persistence.Column;
@@ -21,13 +21,13 @@ public class Consult {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "consultaid")
     private Integer id;
-    
+    /*
     @Column(name = "fecha")
     private String date;
     
     @Column(name = "hora")
     private String time;
-    
+    */
     @Column(name = "citaid")
     private Integer citaId;
     
@@ -55,7 +55,7 @@ public class Consult {
     public void setId(Integer id) {
         this.id = id;
     }
-
+/*
     public String getDate() {
         return date;
     }
@@ -71,7 +71,7 @@ public class Consult {
     public void setTime(String time) {
         this.time = time;
     }
-
+*/
     public Integer getCitaId() {
         return citaId;
     }

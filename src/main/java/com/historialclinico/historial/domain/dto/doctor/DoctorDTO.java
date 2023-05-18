@@ -1,7 +1,7 @@
 
 package com.historialclinico.historial.domain.dto.doctor;
 
-import com.historialclinico.historial.domain.dto.MedicalRecord.ConsultDTO;
+import com.historialclinico.historial.domain.dto.medicalRecord.ConsultDTO;
 import java.util.List;
 
 

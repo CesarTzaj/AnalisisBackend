@@ -1,13 +1,12 @@
-
 package com.historialclinico.historial.domain.dto.person;
 
-import com.historialclinico.historial.domain.dto.MedicalRecord.MedicalRecordDTO;
+import com.historialclinico.historial.domain.dto.medicalRecord.AppointmentDTO;
 import java.util.List;
 
-
 public class PersonDTO {
+
     private long dpi;
-    private String gender;
+    private int gender;
     private Integer age;
     private String firstName;
     private String middleName;
@@ -16,8 +15,10 @@ public class PersonDTO {
     private List<AddressDTO> addresses;
     private List<EmailDTO> emails;
     private List<PhoneNumberDTO> phoneNumbers;
-    private MedicalRecordDTO medicalRecordDTO;
-
+    private List<AppointmentDTO> appointments;
+    private BloodTypeDTO bloodType;
+    private GenreDTO genre;
+    private boolean patient;
     public long getDpi() {
         return dpi;
     }
@@ -26,11 +27,11 @@ public class PersonDTO {
         this.dpi = dpi;
     }
 
-    public String getGender() {
+    public int getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(int gender) {
         this.gender = gender;
     }
 
@@ -98,11 +99,36 @@ public class PersonDTO {
         this.phoneNumbers = phoneNumbers;
     }
 
-    public MedicalRecordDTO getMedicalRecordDTO() {
-        return medicalRecordDTO;
+    public List<AppointmentDTO> getAppointments() {
+        return appointments;
     }
 
-    public void setMedicalRecordDTO(MedicalRecordDTO medicalRecordDTO) {
-        this.medicalRecordDTO = medicalRecordDTO;
+    public void setAppointments(List<AppointmentDTO> appointments) {
+        this.appointments = appointments;
     }
+
+    public BloodTypeDTO getBloodType() {
+        return bloodType;
+    }
+
+    public void setBloodType(BloodTypeDTO bloodType) {
+        this.bloodType = bloodType;
+    }
+
+    public GenreDTO getGenre() {
+        return genre;
+    }
+
+    public void setGenre(GenreDTO genre) {
+        this.genre = genre;
+    }
+
+    public boolean isPatient() {
+        return patient;
+    }
+
+    public void setPatient(boolean patient) {
+        this.patient = patient;
+    }
+
 }

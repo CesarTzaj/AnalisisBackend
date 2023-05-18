@@ -1,6 +1,7 @@
 
-package com.historialclinico.historial.persistence.entity.MedicalRecord;
+package com.historialclinico.historial.persistence.entity.medicalRecord;
 
+import com.historialclinico.historial.persistence.entity.person.Person;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,16 +27,16 @@ public class Appointment {
     @Column(name = "hora")
     private String time;
     
-    @Column(name = "expedienteid")
-    private Integer medicalRecordId;
+    @Column(name = "personaid")
+    private long personaId;
     
     @ManyToOne()
-    @JoinColumn(name = "expedienteid", insertable = false, updatable = false)
-    private MedicalRecord medicalRecord;
+    @JoinColumn(name = "personaid", insertable = false, updatable = false)
+    private Person person;
 
     @OneToMany(mappedBy = "appointment")
     private List<Consult> consults;
-    
+
     public Integer getId() {
         return id;
     }
@@ -60,20 +61,20 @@ public class Appointment {
         this.time = time;
     }
 
-    public Integer getMedicalRecordId() {
-        return medicalRecordId;
+    public long getPersonaId() {
+        return personaId;
     }
 
-    public void setMedicalRecordId(Integer medicalRecordId) {
-        this.medicalRecordId = medicalRecordId;
+    public void setPersonaId(long personaId) {
+        this.personaId = personaId;
     }
 
-    public MedicalRecord getMedicalRecord() {
-        return medicalRecord;
+    public Person getPerson() {
+        return person;
     }
 
-    public void setMedicalRecord(MedicalRecord medicalRecord) {
-        this.medicalRecord = medicalRecord;
+    public void setPerson(Person person) {
+        this.person = person;
     }
 
     public List<Consult> getConsults() {
@@ -83,5 +84,7 @@ public class Appointment {
     public void setConsults(List<Consult> consults) {
         this.consults = consults;
     }
+    
+
     
 }
