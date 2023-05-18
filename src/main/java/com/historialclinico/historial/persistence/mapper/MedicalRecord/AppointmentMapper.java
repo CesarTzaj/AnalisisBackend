@@ -9,7 +9,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.springframework.web.context.annotation.ApplicationScope;
 
-@Mapper(componentModel = "spring", uses = {ConsultMapper.class})
+@Mapper(componentModel = "spring", uses = {ConsultMapper.class, ClinicMapper.class})
 public interface AppointmentMapper {
   
     AppointmentDTO toAppointmentDTO(Appointment appointment);
@@ -18,6 +18,7 @@ public interface AppointmentMapper {
     @Mappings({
         @Mapping(target = "consults", ignore = true),
         @Mapping(target = "person", ignore = true),
+        @Mapping(target = "clinic", ignore = true),
     })
     Appointment toAppointment(AppointmentDTO appointmentDTO);
 }

@@ -30,12 +30,19 @@ public class Appointment {
     @Column(name = "personaid")
     private long personaId;
     
+    @Column(name = "clinicaid")
+    private int clinicId;
+    
     @ManyToOne()
     @JoinColumn(name = "personaid", insertable = false, updatable = false)
     private Person person;
 
     @OneToMany(mappedBy = "appointment")
     private List<Consult> consults;
+    
+    @ManyToOne
+    @JoinColumn(name = "clinicaid", insertable = false, updatable = false)
+    private Clinic clinic;
 
     public Integer getId() {
         return id;
@@ -84,7 +91,22 @@ public class Appointment {
     public void setConsults(List<Consult> consults) {
         this.consults = consults;
     }
-    
 
+    public int getClinicId() {
+        return clinicId;
+    }
+
+    public void setClinicId(int clinicId) {
+        this.clinicId = clinicId;
+    }
+
+    public Clinic getClinic() {
+        return clinic;
+    }
+
+    public void setClinic(Clinic clinic) {
+        this.clinic = clinic;
+    }
+    
     
 }

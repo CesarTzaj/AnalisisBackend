@@ -1,10 +1,10 @@
-CREATE DATABASE  IF NOT EXISTS `bq8mr1ofkwm41wihlvic` /*!40100 DEFAULT CHARACTER SET utf8 */;
+CREATE DATABASE  IF NOT EXISTS `bq8mr1ofkwm41wihlvic` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci */;
 USE `bq8mr1ofkwm41wihlvic`;
--- MariaDB dump 10.19  Distrib 10.4.24-MariaDB, for Win64 (AMD64)
+-- MariaDB dump 10.19  Distrib 10.4.28-MariaDB, for Win64 (AMD64)
 --
 -- Host: localhost    Database: bq8mr1ofkwm41wihlvic
 -- ------------------------------------------------------
--- Server version	10.4.24-MariaDB
+-- Server version	10.4.28-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -32,7 +32,7 @@ CREATE TABLE `admin` (
   PRIMARY KEY (`idadmin`),
   KEY `admin_doctorid_idx` (`doctorid`),
   CONSTRAINT `admin_doctorid` FOREIGN KEY (`doctorid`) REFERENCES `doctor` (`doctorid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -56,11 +56,16 @@ CREATE TABLE `cita` (
   `citaid` int(11) NOT NULL AUTO_INCREMENT,
   `fecha` date NOT NULL,
   `hora` time NOT NULL,
-  `expedienteid` int(11) NOT NULL,
+  `peso` decimal(5,0) DEFAULT NULL,
+  `altura` decimal(5,0) DEFAULT NULL,
+  `personaid` bigint(20) NOT NULL,
+  `clinicaid` int(11) DEFAULT NULL,
   PRIMARY KEY (`citaid`),
-  KEY `cita_expedienteid_idx` (`expedienteid`),
-  CONSTRAINT `cita_expedienteid` FOREIGN KEY (`expedienteid`) REFERENCES `expediente` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  KEY `cita_personaid` (`personaid`),
+  KEY `cita_clinicaid` (`clinicaid`),
+  CONSTRAINT `cita_clinicaid` FOREIGN KEY (`clinicaid`) REFERENCES `clinica` (`id`),
+  CONSTRAINT `cita_personaid` FOREIGN KEY (`personaid`) REFERENCES `persona` (`dpi`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,8 +74,32 @@ CREATE TABLE `cita` (
 
 LOCK TABLES `cita` WRITE;
 /*!40000 ALTER TABLE `cita` DISABLE KEYS */;
-INSERT INTO `cita` VALUES (2,'2023-05-11','10:50:00',1);
+INSERT INTO `cita` VALUES (1,'0000-00-00','00:00:01',12,125,2,1);
 /*!40000 ALTER TABLE `cita` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `clinica`
+--
+
+DROP TABLE IF EXISTS `clinica`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `clinica` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `clinica` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `clinica`
+--
+
+LOCK TABLES `clinica` WRITE;
+/*!40000 ALTER TABLE `clinica` DISABLE KEYS */;
+INSERT INTO `clinica` VALUES (1,'Hospital Yarden Calzada San Juan Gutemala'),(2,'CENTRO MEDICO SAN ANGEL'),(3,'Hospital Roosevelt'),(4,'Hospital Infantil de Infectología y Rehabilitación'),(5,'Hospital San Vicente'),(6,'Hospital San Vicente'),(7,'Hospital Nacional de Salud Mental Federico Mora'),(8,'Hospital De Amatitlán'),(9,'Hospital de La Amistad'),(10,'Hospital El Progreso'),(11,'Hospital Pedro De Bethancourt'),(12,'Hospital Nacional de Chimaltenango'),(13,'Hospital Regional De Escuintla'),(14,'Hospital Distrital De Tiquisate'),(15,'Hospital Regional De Cuilapa'),(16,'Hospital Departamental de Sololá');
+/*!40000 ALTER TABLE `clinica` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -82,9 +111,6 @@ DROP TABLE IF EXISTS `consulta`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `consulta` (
   `consultaid` int(11) NOT NULL AUTO_INCREMENT,
-  `noclinica` varchar(45) NOT NULL,
-  `fecha` date NOT NULL,
-  `hora` time NOT NULL,
   `citaid` int(11) NOT NULL,
   `doctorid` int(11) NOT NULL,
   PRIMARY KEY (`consultaid`),
@@ -92,7 +118,7 @@ CREATE TABLE `consulta` (
   KEY `consulta_citaid_idx` (`citaid`),
   CONSTRAINT `consulta_citaid` FOREIGN KEY (`citaid`) REFERENCES `cita` (`citaid`),
   CONSTRAINT `consulta_doctorid` FOREIGN KEY (`doctorid`) REFERENCES `doctor` (`doctorid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -101,7 +127,7 @@ CREATE TABLE `consulta` (
 
 LOCK TABLES `consulta` WRITE;
 /*!40000 ALTER TABLE `consulta` DISABLE KEYS */;
-INSERT INTO `consulta` VALUES (1,'asdf','2023-05-11','10:59:00',2,2),(2,'2','2023-05-11','10:59:00',2,2);
+INSERT INTO `consulta` VALUES (1,1,1);
 /*!40000 ALTER TABLE `consulta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -115,11 +141,11 @@ DROP TABLE IF EXISTS `direccion`;
 CREATE TABLE `direccion` (
   `direccionid` int(11) NOT NULL AUTO_INCREMENT,
   `direccion` varchar(100) NOT NULL,
-  `personaid` double NOT NULL,
+  `personaid` bigint(13) NOT NULL,
   PRIMARY KEY (`direccionid`),
-  KEY `direccion_personaid_idx` (`personaid`),
+  KEY `direccion_persondpi` (`personaid`),
   CONSTRAINT `direccion_persondpi` FOREIGN KEY (`personaid`) REFERENCES `persona` (`dpi`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -128,7 +154,6 @@ CREATE TABLE `direccion` (
 
 LOCK TABLES `direccion` WRITE;
 /*!40000 ALTER TABLE `direccion` DISABLE KEYS */;
-INSERT INTO `direccion` VALUES (12,'3ra calle 10-51 zona 17',4564),(13,'3ra calle 10-51 zona 17',1);
 /*!40000 ALTER TABLE `direccion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -145,12 +170,12 @@ CREATE TABLE `doctor` (
   `turno` varchar(45) NOT NULL,
   `cargo` varchar(45) NOT NULL,
   `especialidad` varchar(45) NOT NULL,
-  `personaid` double NOT NULL,
+  `personaid` bigint(13) NOT NULL,
   PRIMARY KEY (`doctorid`),
   UNIQUE KEY `licencia_UNIQUE` (`licencia`),
   KEY `doctor_personaid` (`personaid`),
   CONSTRAINT `doctor_personaid` FOREIGN KEY (`personaid`) REFERENCES `persona` (`dpi`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -159,7 +184,7 @@ CREATE TABLE `doctor` (
 
 LOCK TABLES `doctor` WRITE;
 /*!40000 ALTER TABLE `doctor` DISABLE KEYS */;
-INSERT INTO `doctor` VALUES (2,'54','54','45','54',4564);
+INSERT INTO `doctor` VALUES (1,'12','4','1','1',1);
 /*!40000 ALTER TABLE `doctor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -173,11 +198,11 @@ DROP TABLE IF EXISTS `email`;
 CREATE TABLE `email` (
   `idemail` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(45) NOT NULL,
-  `persondpi` double NOT NULL,
+  `persondpi` bigint(13) NOT NULL,
   PRIMARY KEY (`idemail`),
-  KEY `email_personadpi_idx` (`persondpi`),
+  KEY `email_personadpi` (`persondpi`),
   CONSTRAINT `email_personadpi` FOREIGN KEY (`persondpi`) REFERENCES `persona` (`dpi`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -186,39 +211,31 @@ CREATE TABLE `email` (
 
 LOCK TABLES `email` WRITE;
 /*!40000 ALTER TABLE `email` DISABLE KEYS */;
-INSERT INTO `email` VALUES (1,'4564',4564),(2,'4564',4564);
 /*!40000 ALTER TABLE `email` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `expediente`
+-- Table structure for table `genero`
 --
 
-DROP TABLE IF EXISTS `expediente`;
+DROP TABLE IF EXISTS `genero`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `expediente` (
+CREATE TABLE `genero` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `tipo_sangre` int(11) NOT NULL,
-  `estatura` varchar(45) NOT NULL,
-  `peso` varchar(45) NOT NULL,
-  `personaid` double NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `expediente_personaid_idx` (`personaid`),
-  KEY `expediente_tiposangreid_idx` (`tipo_sangre`),
-  CONSTRAINT `expediente_personaid` FOREIGN KEY (`personaid`) REFERENCES `persona` (`dpi`),
-  CONSTRAINT `expediente_tiposangreid` FOREIGN KEY (`tipo_sangre`) REFERENCES `tipo_sangre` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `genero` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `expediente`
+-- Dumping data for table `genero`
 --
 
-LOCK TABLES `expediente` WRITE;
-/*!40000 ALTER TABLE `expediente` DISABLE KEYS */;
-INSERT INTO `expediente` VALUES (1,2,'1.5','15',4564);
-/*!40000 ALTER TABLE `expediente` ENABLE KEYS */;
+LOCK TABLES `genero` WRITE;
+/*!40000 ALTER TABLE `genero` DISABLE KEYS */;
+INSERT INTO `genero` VALUES (1,'Masculino'),(2,'Femenino'),(3,'Otros');
+/*!40000 ALTER TABLE `genero` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -231,13 +248,11 @@ DROP TABLE IF EXISTS `laboratorio`;
 CREATE TABLE `laboratorio` (
   `laboratorioid` int(11) NOT NULL AUTO_INCREMENT,
   `tipo_laboratorio` varchar(45) NOT NULL,
-  `fecha` date NOT NULL,
-  `hora` time NOT NULL,
   `consultaid` int(11) NOT NULL,
   PRIMARY KEY (`laboratorioid`),
   KEY `laboratori_consultaid_idx` (`consultaid`),
   CONSTRAINT `laboratori_consultaid` FOREIGN KEY (`consultaid`) REFERENCES `consulta` (`consultaid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -246,32 +261,8 @@ CREATE TABLE `laboratorio` (
 
 LOCK TABLES `laboratorio` WRITE;
 /*!40000 ALTER TABLE `laboratorio` DISABLE KEYS */;
-INSERT INTO `laboratorio` VALUES (1,'12','0000-00-00','00:00:12',1);
+INSERT INTO `laboratorio` VALUES (1,'Sangre',1);
 /*!40000 ALTER TABLE `laboratorio` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `medicina`
---
-
-DROP TABLE IF EXISTS `medicina`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `medicina` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `medicamento` varchar(200) NOT NULL,
-  `docisi` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `medicina`
---
-
-LOCK TABLES `medicina` WRITE;
-/*!40000 ALTER TABLE `medicina` DISABLE KEYS */;
-/*!40000 ALTER TABLE `medicina` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -282,15 +273,21 @@ DROP TABLE IF EXISTS `persona`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `persona` (
-  `dpi` double NOT NULL,
-  `genero` varchar(10) NOT NULL,
+  `dpi` bigint(13) NOT NULL,
+  `generoid` int(11) NOT NULL,
   `edad` int(11) NOT NULL,
   `primer_nombre` varchar(20) NOT NULL,
   `segundo_nombre` varchar(20) DEFAULT NULL,
   `primer_apellido` varchar(20) NOT NULL,
   `sapellido` varchar(20) NOT NULL,
-  PRIMARY KEY (`dpi`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `bloodid` int(11) NOT NULL,
+  `paciente` tinyint(4) NOT NULL,
+  PRIMARY KEY (`dpi`),
+  KEY `person_blodid` (`bloodid`),
+  KEY `person_generoid` (`generoid`),
+  CONSTRAINT `person_blodid` FOREIGN KEY (`bloodid`) REFERENCES `tipo_sangre` (`id`),
+  CONSTRAINT `person_generoid` FOREIGN KEY (`generoid`) REFERENCES `genero` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -299,7 +296,7 @@ CREATE TABLE `persona` (
 
 LOCK TABLES `persona` WRITE;
 /*!40000 ALTER TABLE `persona` DISABLE KEYS */;
-INSERT INTO `persona` VALUES (1,'M',3,'Carlos','Noe','Lopez','Gomez'),(4564,'M',12,'sad','sd','sdf','asd');
+INSERT INTO `persona` VALUES (1,1,25,'Cesar','Noe','Tzaj','Gabriel',1,0),(2,2,24,'Fernando',NULL,'Gomez','Lopez',2,1);
 /*!40000 ALTER TABLE `persona` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -318,7 +315,7 @@ CREATE TABLE `receta` (
   PRIMARY KEY (`recetaid`),
   KEY `receta_consultaid_idx` (`consultaid`),
   CONSTRAINT `receta_consultaid` FOREIGN KEY (`consultaid`) REFERENCES `consulta` (`consultaid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -327,7 +324,7 @@ CREATE TABLE `receta` (
 
 LOCK TABLES `receta` WRITE;
 /*!40000 ALTER TABLE `receta` DISABLE KEYS */;
-INSERT INTO `receta` VALUES (1,'Amoxixilina','12',1);
+INSERT INTO `receta` VALUES (1,'Amoxicilina','500mg cada 8hrs',1);
 /*!40000 ALTER TABLE `receta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -341,11 +338,11 @@ DROP TABLE IF EXISTS `telefono`;
 CREATE TABLE `telefono` (
   `telefonoid` int(11) NOT NULL AUTO_INCREMENT,
   `numero_telefono` varchar(15) NOT NULL,
-  `personadpi` double NOT NULL,
+  `personadpi` bigint(13) NOT NULL,
   PRIMARY KEY (`telefonoid`),
-  KEY `telfono_personadpi_idx` (`personadpi`),
-  CONSTRAINT `telfono_personadpi` FOREIGN KEY (`personadpi`) REFERENCES `persona` (`dpi`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+  KEY `telefono_personaid` (`personadpi`),
+  CONSTRAINT `telefono_personaid` FOREIGN KEY (`personadpi`) REFERENCES `persona` (`dpi`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -354,7 +351,6 @@ CREATE TABLE `telefono` (
 
 LOCK TABLES `telefono` WRITE;
 /*!40000 ALTER TABLE `telefono` DISABLE KEYS */;
-INSERT INTO `telefono` VALUES (1,'4564',4564),(6,'4564',4564);
 /*!40000 ALTER TABLE `telefono` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -369,7 +365,7 @@ CREATE TABLE `tipo_sangre` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tipo_sangre` varchar(3) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -391,4 +387,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-13 22:01:24
+-- Dump completed on 2023-05-17 22:59:20

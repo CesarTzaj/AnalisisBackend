@@ -1,4 +1,4 @@
-package com.historialclinico.historial.web;
+package com.historialclinico.historial.web.swagger;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.models.OpenAPI;

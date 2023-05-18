@@ -22,7 +22,7 @@ public class Person {
     private Integer genero;
 
     private Integer edad;
-
+    
     @Column(name = "primer_nombre")
     private String primerNombre;
 
@@ -35,6 +35,7 @@ public class Person {
     @Column(name = "sapellido")
     private String segundoApellido;
 
+    private int bloodid; 
     @OneToMany(mappedBy = "person")
     private List<Address> addresses;
 
@@ -168,6 +169,14 @@ public class Person {
 
     public void setPatient(boolean patient) {
         this.patient = patient;
+    }
+
+    public int getBloodid() {
+        return bloodid;
+    }
+
+    public void setBloodid(int bloodid) {
+        this.bloodid = bloodid;
     }
 
 }

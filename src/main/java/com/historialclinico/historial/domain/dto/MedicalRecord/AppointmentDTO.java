@@ -11,7 +11,8 @@ public class AppointmentDTO {
     private String time;
     private long personaId;
     private List<ConsultDTO> consults;
-
+    private int clinicId;
+    private ClinicDTO clinic;
     public Integer getId() {
         return id;
     }
@@ -52,7 +53,20 @@ public class AppointmentDTO {
         this.consults = consults;
     }
 
+    public ClinicDTO getClinic() {
+        return clinic;
+    }
 
+    public void setClinic(ClinicDTO clinic) {
+        this.clinic = clinic;
+    }
 
+    public int getClinicId() {
+        return clinicId;
+    }
+
+    public void setClinicId(int clinicId) {
+        this.clinicId = clinicId;
+    }
     
 }
