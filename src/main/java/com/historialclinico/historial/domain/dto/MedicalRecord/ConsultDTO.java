@@ -7,13 +7,11 @@ import java.util.List;
 public class ConsultDTO {
     
     private Integer id;
-    //private String date;
-   // private String time;
     private Integer citaId;
     private Integer doctorId;
     private List<PrescriptionDTO> prescriptions;
     private List<ExamDTO> exams;
-   // private DoctorDTO doctor;
+    private DoctorDTO doctor;
     
     public Integer getId() {
         return id;
@@ -22,23 +20,7 @@ public class ConsultDTO {
     public void setId(Integer id) {
         this.id = id;
     }
-/*
-    public String getDate() {
-        return date;
-    }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-*/
     public Integer getCitaId() {
         return citaId;
     }
@@ -70,7 +52,7 @@ public class ConsultDTO {
     public void setExams(List<ExamDTO> exams) {
         this.exams = exams;
     }
-/*
+
     public DoctorDTO getDoctor() {
         return doctor;
     }
@@ -78,5 +60,5 @@ public class ConsultDTO {
     public void setDoctor(DoctorDTO doctor) {
         this.doctor = doctor;
     }
- */
+
 }

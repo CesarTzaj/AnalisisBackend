@@ -9,7 +9,12 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
-@Mapper(componentModel = "spring", uses = {PrescriptionMapper.class, ExamMapper.class, DoctorMapper.class})
+@Mapper(componentModel = "spring", uses = {
+    PrescriptionMapper.class, 
+    ExamMapper.class, 
+    DoctorMapper.class,
+    
+})
 public interface ConsultMapper {
     
     ConsultDTO toConsultDTO(Consult consult);
@@ -19,6 +24,7 @@ public interface ConsultMapper {
         @Mapping(target = "appointment", ignore = true),
         @Mapping(target = "prescriptions", ignore = true),
         @Mapping(target = "exams", ignore = true),
+        @Mapping(target = "doctor", ignore = true)
     })
     Consult toConsult(ConsultDTO consultDTO);
 }

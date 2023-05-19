@@ -1,13 +1,16 @@
 
 package com.historialclinico.historial.persistence.entity.doctor;
 
-import com.historialclinico.historial.domain.dto.medicalRecord.ConsultDTO;
+
+import com.historialclinico.historial.persistence.entity.medicalRecord.Consult;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.util.List;
 
@@ -24,10 +27,16 @@ public class Doctor {
    private String turno;
    private String cargo;
    private String especialidad;
-  /*
+   @Column(name = "personaid")
+   private long personaId;
+   
+   @OneToOne
+   @JoinColumn(name = "personaid", updatable = false, insertable = false)
+   private PersonDoctor person;
+  
    @OneToMany(mappedBy = "doctor")
-   private List<ConsultDTO> consult;
-   */
+   private List<Consult> consult;
+   
     public Integer getId() {
         return id;
     }
@@ -67,15 +76,30 @@ public class Doctor {
     public void setEspecialidad(String especialidad) {
         this.especialidad = especialidad;
     }
-/*
-    public List<ConsultDTO> getConsult() {
+
+    public long getPersonaId() {
+        return personaId;
+    }
+
+    public void setPersonaId(long personaId) {
+        this.personaId = personaId;
+    }
+
+    public PersonDoctor getPerson() {
+        return person;
+    }
+
+    public void setPerson(PersonDoctor person) {
+        this.person = person;
+    }
+
+    public List<Consult> getConsult() {
         return consult;
     }
 
-    public void setConsult(List<ConsultDTO> consult) {
+    public void setConsult(List<Consult> consult) {
         this.consult = consult;
     }
 
-*/
    
 }

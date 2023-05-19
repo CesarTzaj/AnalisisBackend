@@ -1,10 +1,17 @@
-package com.historialclinico.historial.domain.dto.person;
 
-import com.historialclinico.historial.domain.dto.medicalRecord.AppointmentDTO;
+package com.historialclinico.historial.domain.dto.doctor;
+
+import com.historialclinico.historial.domain.dto.person.AddressDTO;
+import com.historialclinico.historial.domain.dto.person.BloodTypeDTO;
+import com.historialclinico.historial.domain.dto.person.EmailDTO;
+import com.historialclinico.historial.domain.dto.person.GenreDTO;
+import com.historialclinico.historial.domain.dto.person.PhoneNumberDTO;
 import java.util.List;
 
-public class PersonDTO {
 
+public class PersonDoctorDTO {
+     
+    
     private long dpi;
     private String firstName;
     private String middleName;
@@ -12,14 +19,11 @@ public class PersonDTO {
     private String secLastName;
     private int gender;
     private Integer age;
-    private int bloodid; 
-    private BloodTypeDTO bloodType;
     private GenreDTO genre;
     private List<AddressDTO> addresses;
     private List<EmailDTO> emails;
     private List<PhoneNumberDTO> phoneNumbers;
-    private List<AppointmentDTO> appointments;
-
+    
 
     public long getDpi() {
         return dpi;
@@ -77,22 +81,6 @@ public class PersonDTO {
         this.age = age;
     }
 
-    public int getBloodid() {
-        return bloodid;
-    }
-
-    public void setBloodid(int bloodid) {
-        this.bloodid = bloodid;
-    }
-
-    public BloodTypeDTO getBloodType() {
-        return bloodType;
-    }
-
-    public void setBloodType(BloodTypeDTO bloodType) {
-        this.bloodType = bloodType;
-    }
-
     public GenreDTO getGenre() {
         return genre;
     }
@@ -123,14 +111,6 @@ public class PersonDTO {
 
     public void setPhoneNumbers(List<PhoneNumberDTO> phoneNumbers) {
         this.phoneNumbers = phoneNumbers;
-    }
-
-    public List<AppointmentDTO> getAppointments() {
-        return appointments;
-    }
-
-    public void setAppointments(List<AppointmentDTO> appointments) {
-        this.appointments = appointments;
     }
     
 }

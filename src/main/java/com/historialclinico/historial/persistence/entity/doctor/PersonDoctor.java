@@ -1,6 +1,10 @@
-package com.historialclinico.historial.persistence.entity.person;
 
-import com.historialclinico.historial.persistence.entity.medicalRecord.Appointment;
+package com.historialclinico.historial.persistence.entity.doctor;
+
+import com.historialclinico.historial.persistence.entity.person.Address;
+import com.historialclinico.historial.persistence.entity.person.Email;
+import com.historialclinico.historial.persistence.entity.person.Genre;
+import com.historialclinico.historial.persistence.entity.person.PhoneNumber;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -13,8 +17,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "persona")
-public class Person {
-
+public class PersonDoctor {
+    
     @Id
     private long dpi;
 
@@ -33,28 +37,25 @@ public class Person {
     private String primerApellido;
 
     @Column(name = "sapellido")
-    private String segundoApellido;
-
-    private int bloodid; 
-    @OneToMany(mappedBy = "person")
-    private List<Address> addresses;
+    private String segundoApellido;  
 
     @OneToMany(mappedBy = "person")
     private List<Email> emails;
 
     @OneToMany(mappedBy = "person")
     private List<PhoneNumber> phoneNumbers;
-
-    @OneToMany(mappedBy = "person")
-    private List<Appointment> appointments;
-
-    @ManyToOne
-    @JoinColumn(name = "bloodid", insertable = false, updatable = false)
-    private BloodType bloodType;
-
+    
+     @OneToMany(mappedBy = "person")
+    private List<Address> addresses;
+    
+    @OneToOne(mappedBy = "person")
+    private Doctor doctor;
+    
     @ManyToOne
     @JoinColumn(name = "generoid", insertable = false, updatable = false)
     private Genre genre;
+    
+    
 
     public long getDpi() {
         return dpi;
@@ -112,14 +113,6 @@ public class Person {
         this.segundoApellido = segundoApellido;
     }
 
-    public List<Address> getAddresses() {
-        return addresses;
-    }
-
-    public void setAddresses(List<Address> addresses) {
-        this.addresses = addresses;
-    }
-
     public List<Email> getEmails() {
         return emails;
     }
@@ -136,20 +129,20 @@ public class Person {
         this.phoneNumbers = phoneNumbers;
     }
 
-    public List<Appointment> getAppointments() {
-        return appointments;
+    public Doctor getDoctor() {
+        return doctor;
     }
 
-    public void setAppointments(List<Appointment> appointments) {
-        this.appointments = appointments;
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
     }
 
-    public BloodType getBloodType() {
-        return bloodType;
+    public List<Address> getAddresses() {
+        return addresses;
     }
 
-    public void setBloodType(BloodType bloodType) {
-        this.bloodType = bloodType;
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
     }
 
     public Genre getGenre() {
@@ -160,12 +153,4 @@ public class Person {
         this.genre = genre;
     }
     
-    public int getBloodid() {
-        return bloodid;
-    }
-
-    public void setBloodid(int bloodid) {
-        this.bloodid = bloodid;
-    }
-
 }

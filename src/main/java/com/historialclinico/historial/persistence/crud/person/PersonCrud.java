@@ -8,5 +8,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface PersonCrud extends CrudRepository<Person, Long>{
  
-    Optional<Person> findByDpiAndPatient (long dpi, boolean patient);
+    Optional<Person> findByDpi (long dpi);
 }

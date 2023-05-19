@@ -21,13 +21,7 @@ public class Consult {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "consultaid")
     private Integer id;
-    /*
-    @Column(name = "fecha")
-    private String date;
-    
-    @Column(name = "hora")
-    private String time;
-    */
+
     @Column(name = "citaid")
     private Integer citaId;
     
@@ -43,11 +37,11 @@ public class Consult {
             
     @OneToMany(mappedBy = "consult")
     private List<Exam> exams;
-  /*  
+    
     @ManyToOne
     @JoinColumn(name = "doctorid", insertable = false, updatable = false)
     private Doctor doctor;
-    */
+    
     public Integer getId() {
         return id;
     }
@@ -55,23 +49,7 @@ public class Consult {
     public void setId(Integer id) {
         this.id = id;
     }
-/*
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-*/
+    
     public Integer getCitaId() {
         return citaId;
     }
@@ -111,7 +89,7 @@ public class Consult {
     public void setExams(List<Exam> exams) {
         this.exams = exams;
     }
-/*
+
     public Doctor getDoctor() {
         return doctor;
     }
@@ -120,6 +98,5 @@ public class Consult {
         this.doctor = doctor;
     }
 
-*/
     
 }

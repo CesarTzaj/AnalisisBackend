@@ -41,7 +41,7 @@ public class PersonRepository implements PersonRepositoryDTO {
 
     @Override
     public Optional<PersonDTO> getByDpi(long id) {
-        return crud.findByDpiAndPatient(id, true)
+        return crud.findByDpi(id)
                 .map(person -> mapper.toPersonDTO(person));
     }
 

@@ -6,7 +6,9 @@ import com.historialclinico.historial.persistence.entity.doctor.Doctor;
 import org.mapstruct.Mapper;
 
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {
+    PersonDoctorMapper.class
+})
 public interface DoctorMapper {
     
     
