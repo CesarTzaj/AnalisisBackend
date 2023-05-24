@@ -6,7 +6,7 @@ import com.historialclinico.historial.domain.service.person.AddressService;
 import com.historialclinico.historial.persistence.crud.person.PersonCrud;
 import com.historialclinico.historial.persistence.entity.person.Person;
 import com.historialclinico.historial.persistence.mapper.person.PersonMapper;
-import com.historialclinico.historial.domain.dto.person.AddressDTO;
+import com.historialclinico.historial.domain.dto.person.address.AddressDTO;
 import com.historialclinico.historial.persistence.crud.person.AddressCrudRepository;
 import java.util.List;
 import java.util.Optional;

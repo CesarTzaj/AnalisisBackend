@@ -21,11 +21,11 @@ public class Prescription {
     @Column(name = "recetaid")
     private Integer id;
     
-    @Column(name = "medicamentos")
+    @Column(name = "medicamentoid")
     private String drug; 
     @Column(name = "dosis")
-    private String dosage;
-    
+    private int dosage;
+    private String comentario;
     @Column(name = "consultaid")
     private Integer consultaId;
     
@@ -49,11 +49,11 @@ public class Prescription {
         this.drug = drug;
     }
 
-    public String getDosage() {
+    public int getDosage() {
         return dosage;
     }
 
-    public void setDosage(String dosage) {
+    public void setDosage(int dosage) {
         this.dosage = dosage;
     }
 
@@ -71,6 +71,14 @@ public class Prescription {
 
     public void setConsult(Consult consult) {
         this.consult = consult;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
     
 }

@@ -1,7 +1,7 @@
 
 package com.historialclinico.historial.persistence.entity.doctor;
 
-import com.historialclinico.historial.persistence.entity.person.Address;
+import com.historialclinico.historial.persistence.entity.person.address.Address;
 import com.historialclinico.historial.persistence.entity.person.Email;
 import com.historialclinico.historial.persistence.entity.person.Genre;
 import com.historialclinico.historial.persistence.entity.person.PhoneNumber;

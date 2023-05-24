@@ -1,7 +1,7 @@
 
 package com.historialclinico.historial.persistence.mapper.person;
 
-import com.historialclinico.historial.persistence.mapper.person.AddressMapper;
+import com.historialclinico.historial.persistence.mapper.person.address.AddressMapper;
 import com.historialclinico.historial.domain.dto.person.PersonDTO;
 import com.historialclinico.historial.persistence.entity.person.Person;
 import com.historialclinico.historial.persistence.mapper.MedicalRecord.AppointmentMapper;

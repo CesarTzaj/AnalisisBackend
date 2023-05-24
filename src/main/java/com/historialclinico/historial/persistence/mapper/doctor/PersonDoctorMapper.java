@@ -3,7 +3,7 @@ package com.historialclinico.historial.persistence.mapper.doctor;
 
 import com.historialclinico.historial.domain.dto.doctor.PersonDoctorDTO;
 import com.historialclinico.historial.persistence.entity.doctor.PersonDoctor;
-import com.historialclinico.historial.persistence.mapper.person.AddressMapper;
+import com.historialclinico.historial.persistence.mapper.person.address.AddressMapper;
 import com.historialclinico.historial.persistence.mapper.person.EmailMapper;
 import com.historialclinico.historial.persistence.mapper.person.GenreMapper;
 import com.historialclinico.historial.persistence.mapper.person.PhoneNumberMapper;

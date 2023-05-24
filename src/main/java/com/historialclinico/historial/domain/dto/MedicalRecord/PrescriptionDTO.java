@@ -4,7 +4,8 @@ public class PrescriptionDTO {
 
     private Integer id;
     private String drug;
-    private String dosage;
+    private int dosage;
+    private String comentario;
     private Integer consultaId;
 
     public Integer getId() {
@@ -23,11 +24,11 @@ public class PrescriptionDTO {
         this.drug = drug;
     }
 
-    public String getDosage() {
+    public int getDosage() {
         return dosage;
     }
 
-    public void setDosage(String dosage) {
+    public void setDosage(int dosage) {
         this.dosage = dosage;
     }
 
@@ -37,6 +38,14 @@ public class PrescriptionDTO {
 
     public void setConsultaId(Integer consultaId) {
         this.consultaId = consultaId;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
     
 }

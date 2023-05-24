@@ -1,5 +1,6 @@
 package com.historialclinico.historial.domain.dto.person;
 
+import com.historialclinico.historial.domain.dto.person.address.AddressDTO;
 import com.historialclinico.historial.domain.dto.medicalRecord.AppointmentDTO;
 import java.util.List;
 

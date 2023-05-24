@@ -1,7 +1,7 @@
 
 package com.historialclinico.historial.domain.dto.doctor;
 
-import com.historialclinico.historial.domain.dto.person.AddressDTO;
+import com.historialclinico.historial.domain.dto.person.address.AddressDTO;
 import com.historialclinico.historial.domain.dto.person.BloodTypeDTO;
 import com.historialclinico.historial.domain.dto.person.EmailDTO;
 import com.historialclinico.historial.domain.dto.person.GenreDTO;

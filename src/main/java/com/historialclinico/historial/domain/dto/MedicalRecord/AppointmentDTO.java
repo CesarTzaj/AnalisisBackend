@@ -13,6 +13,9 @@ public class AppointmentDTO {
     private List<ConsultDTO> consults;
     private int clinicId;
     private ClinicDTO clinic;
+    private String peso;
+    private String altura;
+    
     public Integer getId() {
         return id;
     }
@@ -67,6 +70,22 @@ public class AppointmentDTO {
 
     public void setClinicId(int clinicId) {
         this.clinicId = clinicId;
+    }
+
+    public String getPeso() {
+        return peso;
+    }
+
+    public void setPeso(String peso) {
+        this.peso = peso;
+    }
+
+    public String getAltura() {
+        return altura;
+    }
+
+    public void setAltura(String altura) {
+        this.altura = altura;
     }
     
 }

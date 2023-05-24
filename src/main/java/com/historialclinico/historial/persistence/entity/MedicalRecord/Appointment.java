@@ -12,6 +12,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.List;
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Table(name = "cita")
@@ -22,6 +23,8 @@ public class Appointment {
     @Column(name = "citaid")
     private Integer id;
     
+    
+
     @Column(name = "fecha")
     private String date;
     @Column(name = "hora")
@@ -32,6 +35,9 @@ public class Appointment {
     
     @Column(name = "clinicaid")
     private int clinicId;
+    
+    private String peso;
+    private String altura;
     
     @ManyToOne()
     @JoinColumn(name = "personaid", insertable = false, updatable = false)
@@ -106,6 +112,22 @@ public class Appointment {
 
     public void setClinic(Clinic clinic) {
         this.clinic = clinic;
+    }
+
+    public String getPeso() {
+        return peso;
+    }
+
+    public void setPeso(String peso) {
+        this.peso = peso;
+    }
+
+    public String getAltura() {
+        return altura;
+    }
+
+    public void setAltura(String altura) {
+        this.altura = altura;
     }
     
     
