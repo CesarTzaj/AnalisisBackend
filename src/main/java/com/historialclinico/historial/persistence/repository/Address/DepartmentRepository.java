@@ -8,6 +8,7 @@ import com.historialclinico.historial.persistence.entity.person.address.Departme
 import com.historialclinico.historial.persistence.mapper.address.DepartmentMapper;
 import com.historialclinico.historial.persistence.mapper.address.DepartmentTownMapper;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -28,12 +29,9 @@ public class DepartmentRepository implements DepartmentRepositoryDTO{
     }
 
     @Override
-    public List<DepartmentDTO> findByDepartmentAndTown() {
-        List<Department> departments = (List<Department>)  crud.findAll();
-        return mapperTown.toDepartmentDTOs(departments);
+    public Optional<DepartmentDTO> findById(int id) {
+        return crud.findById(id)
+                .map(Department -> mapperTown.toDepartmentDTO(Department));
     }
 
-
-    
-    
 }

@@ -1,5 +1,5 @@
 
-package com.historialclinico.historial.web.controller.person.address;
+package com.historialclinico.historial.web.controller.address;
 
 import com.historialclinico.historial.domain.dto.address.AddressDTO;
 import com.historialclinico.historial.domain.service.address.AddressService;
