@@ -3,6 +3,7 @@ package com.historialclinico.historial.persistence.entity.doctor;
 
 
 import com.historialclinico.historial.persistence.entity.medicalRecord.Consult;
+import com.historialclinico.historial.persistence.entity.person.Person;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,7 +33,7 @@ public class Doctor {
    
    @OneToOne
    @JoinColumn(name = "personaid", updatable = false, insertable = false)
-   private PersonDoctor person;
+   private Person person;
   
    @OneToMany(mappedBy = "doctor")
    private List<Consult> consult;
@@ -85,11 +86,11 @@ public class Doctor {
         this.personaId = personaId;
     }
 
-    public PersonDoctor getPerson() {
+    public Person getPerson() {
         return person;
     }
 
-    public void setPerson(PersonDoctor person) {
+    public void setPerson(Person person) {
         this.person = person;
     }
 

@@ -5,7 +5,7 @@ package com.historialclinico.historial.domain.dto.person;
 public class PhoneNumberDTO {
         
     private Integer id;
-    private String phoneNumber;
+    private int phoneNumber;
     private long dpi;
 
     public Integer getId() {
@@ -16,11 +16,11 @@ public class PhoneNumberDTO {
         this.id = id;
     }
 
-    public String getPhoneNumber() {
+    public int getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

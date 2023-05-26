@@ -17,7 +17,6 @@ public interface AppointmentMapper {
     @InheritInverseConfiguration
     @Mappings({
         @Mapping(target = "consults", ignore = true),
-        @Mapping(target = "person", ignore = true),
         @Mapping(target = "clinic", ignore = true),
     })
     Appointment toAppointment(AppointmentDTO appointmentDTO);

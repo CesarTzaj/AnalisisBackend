@@ -23,8 +23,6 @@ public class Appointment {
     @Column(name = "citaid")
     private Integer id;
     
-    
-
     @Column(name = "fecha")
     private String date;
     @Column(name = "hora")
@@ -39,10 +37,6 @@ public class Appointment {
     private String peso;
     private String altura;
     
-    @ManyToOne()
-    @JoinColumn(name = "personaid", insertable = false, updatable = false)
-    private Person person;
-
     @OneToMany(mappedBy = "appointment")
     private List<Consult> consults;
     
@@ -80,14 +74,6 @@ public class Appointment {
 
     public void setPersonaId(long personaId) {
         this.personaId = personaId;
-    }
-
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
     }
 
     public List<Consult> getConsults() {

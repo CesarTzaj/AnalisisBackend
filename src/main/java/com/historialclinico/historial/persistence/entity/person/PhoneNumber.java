@@ -19,8 +19,8 @@ public class PhoneNumber {
     @Column(name = "telefonoid")
     private Integer id;
     
-    @Column(name = "numero_telefono")
-    private String phoneNumber;
+    @Column(name = "numero_telefono",nullable = true)
+    private int phoneNumber;
     
     private long personadpi;
     
@@ -36,11 +36,11 @@ public class PhoneNumber {
         this.id = id;
     }
 
-    public String getPhoneNumber() {
+    public int getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

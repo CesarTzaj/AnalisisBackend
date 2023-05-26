@@ -1,5 +1,6 @@
 package com.historialclinico.historial.persistence.entity.person;
 
+import com.historialclinico.historial.persistence.entity.doctor.Doctor;
 import com.historialclinico.historial.persistence.entity.person.address.Address;
 import com.historialclinico.historial.persistence.entity.medicalRecord.Appointment;
 import jakarta.persistence.Column;
@@ -23,7 +24,7 @@ public class Person {
     private Integer genero;
 
     private Integer edad;
-    
+
     @Column(name = "primer_nombre")
     private String primerNombre;
 
@@ -35,8 +36,10 @@ public class Person {
 
     @Column(name = "sapellido")
     private String segundoApellido;
+    @Column(name = "estado")
+    private boolean status;
 
-    private int bloodid; 
+    private int bloodid;
     @OneToMany(mappedBy = "person")
     private List<Address> addresses;
 
@@ -46,9 +49,6 @@ public class Person {
     @OneToMany(mappedBy = "person")
     private List<PhoneNumber> phoneNumbers;
 
-    @OneToMany(mappedBy = "person")
-    private List<Appointment> appointments;
-
     @ManyToOne
     @JoinColumn(name = "bloodid", insertable = false, updatable = false)
     private BloodType bloodType;
@@ -56,6 +56,9 @@ public class Person {
     @ManyToOne
     @JoinColumn(name = "generoid", insertable = false, updatable = false)
     private Genre genre;
+
+    @OneToOne(mappedBy = "person")
+    private Doctor doctor;
 
     public long getDpi() {
         return dpi;
@@ -137,14 +140,6 @@ public class Person {
         this.phoneNumbers = phoneNumbers;
     }
 
-    public List<Appointment> getAppointments() {
-        return appointments;
-    }
-
-    public void setAppointments(List<Appointment> appointments) {
-        this.appointments = appointments;
-    }
-
     public BloodType getBloodType() {
         return bloodType;
     }
@@ -160,13 +155,21 @@ public class Person {
     public void setGenre(Genre genre) {
         this.genre = genre;
     }
-    
+
     public int getBloodid() {
         return bloodid;
     }
 
     public void setBloodid(int bloodid) {
         this.bloodid = bloodid;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
 }

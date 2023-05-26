@@ -1,5 +1,5 @@
 
-package com.historialclinico.historial.domain.dto.person.address;
+package com.historialclinico.historial.domain.dto.address;
 
 
 public class AddressDTO {

@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -22,6 +24,10 @@ public class Town {
     
     @OneToOne(mappedBy = "town")
     private Address address;
+    
+    @ManyToOne
+    @JoinColumn(name = "depid", updatable = false, insertable = false)
+    private Department department;
 
     public Integer getId() {
         return id;
@@ -53,6 +59,14 @@ public class Town {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
     }
     
 }

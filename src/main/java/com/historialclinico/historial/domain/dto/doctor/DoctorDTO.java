@@ -2,6 +2,7 @@
 package com.historialclinico.historial.domain.dto.doctor;
 
 import com.historialclinico.historial.domain.dto.medicalRecord.ConsultDTO;
+import com.historialclinico.historial.domain.dto.person.PersonDTO;
 import java.util.List;
 
 
@@ -13,7 +14,7 @@ public class DoctorDTO {
    private String cargo;
    private String especialidad;
    private long personaId;
-   private PersonDoctorDTO person;
+   private PersonDTO person;
    
     public Integer getId() {
         return id;
@@ -63,13 +64,15 @@ public class DoctorDTO {
         this.personaId = personaId;
     }
 
-    public PersonDoctorDTO getPerson() {
+    public PersonDTO getPerson() {
         return person;
     }
 
-    public void setPerson(PersonDoctorDTO person) {
+    public void setPerson(PersonDTO person) {
         this.person = person;
     }
+
+  
 
    
 }

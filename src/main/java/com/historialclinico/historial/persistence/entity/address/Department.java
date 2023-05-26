@@ -1,6 +1,7 @@
 
 package com.historialclinico.historial.persistence.entity.person.address;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -12,9 +13,14 @@ import java.util.List;
 public class Department {
     @Id
     private Integer id;
+    
     private String departamento;
+    
+    
     @OneToMany(mappedBy = "department")
     private List<Address> addresses;
+    @OneToMany(mappedBy = "department")
+    private List<Town> towns;
 
     public Integer getId() {
         return id;
@@ -40,6 +46,12 @@ public class Department {
         this.addresses = addresses;
     }
 
-   
-    
+    public List<Town> getTowns() {
+        return towns;
+    }
+
+    public void setTowns(List<Town> towns) {
+        this.towns = towns;
+    }
+ 
 }

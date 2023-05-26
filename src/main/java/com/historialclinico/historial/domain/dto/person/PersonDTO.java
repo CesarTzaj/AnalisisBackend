@@ -1,6 +1,6 @@
 package com.historialclinico.historial.domain.dto.person;
 
-import com.historialclinico.historial.domain.dto.person.address.AddressDTO;
+import com.historialclinico.historial.domain.dto.address.AddressDTO;
 import com.historialclinico.historial.domain.dto.medicalRecord.AppointmentDTO;
 import java.util.List;
 
@@ -14,12 +14,12 @@ public class PersonDTO {
     private int gender;
     private Integer age;
     private int bloodid; 
+    private boolean status;
     private BloodTypeDTO bloodType;
     private GenreDTO genre;
     private List<AddressDTO> addresses;
     private List<EmailDTO> emails;
     private List<PhoneNumberDTO> phoneNumbers;
-    private List<AppointmentDTO> appointments;
 
 
     public long getDpi() {
@@ -126,12 +126,12 @@ public class PersonDTO {
         this.phoneNumbers = phoneNumbers;
     }
 
-    public List<AppointmentDTO> getAppointments() {
-        return appointments;
+    public boolean isStatus() {
+        return status;
     }
 
-    public void setAppointments(List<AppointmentDTO> appointments) {
-        this.appointments = appointments;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
     
 }
