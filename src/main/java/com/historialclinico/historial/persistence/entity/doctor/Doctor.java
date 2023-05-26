@@ -23,11 +23,11 @@ public class Doctor {
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    @Column(name = "doctorid")
    private Integer id;
-   
    private Integer licencia;
    private String turno;
    private String cargo;
    private String especialidad;
+   private boolean activo;
    @Column(name = "personaid")
    private long personaId;
    
@@ -100,6 +100,14 @@ public class Doctor {
 
     public void setConsult(List<Consult> consult) {
         this.consult = consult;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 
    

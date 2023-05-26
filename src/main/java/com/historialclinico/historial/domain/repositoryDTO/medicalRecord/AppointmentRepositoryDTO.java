@@ -7,6 +7,7 @@ import java.util.Optional;
 public interface AppointmentRepositoryDTO {
     
     AppointmentDTO save(AppointmentDTO appointmentDTO);
+    
     Optional<AppointmentDTO> getById(int id);
     void delete(int id);
 }
