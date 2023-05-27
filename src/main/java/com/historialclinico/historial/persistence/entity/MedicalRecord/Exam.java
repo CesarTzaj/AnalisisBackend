@@ -13,8 +13,9 @@ public class Exam {
     private Integer id;
     
     @Column(name = "laboratorioid")
-    private String examId;
+    private int examId;
     
+    private String comentario;
     @Column(name = "consultaid", nullable = false )
     private Integer consultaId;
     
@@ -34,12 +35,20 @@ public class Exam {
         this.id = id;
     }
 
-    public String getExamId() {
+    public int getExamId() {
         return examId;
     }
 
-    public void setExamId(String examId) {
+    public void setExamId(int examId) {
         this.examId = examId;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
 
     public Integer getConsultaId() {
@@ -67,5 +76,4 @@ public class Exam {
     }
 
     
-  
 }
