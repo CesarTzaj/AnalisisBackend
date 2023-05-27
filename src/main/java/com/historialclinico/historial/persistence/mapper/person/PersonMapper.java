@@ -4,7 +4,7 @@ package com.historialclinico.historial.persistence.mapper.person;
 import com.historialclinico.historial.persistence.mapper.address.AddressMapper;
 import com.historialclinico.historial.domain.dto.person.PersonDTO;
 import com.historialclinico.historial.persistence.entity.person.Person;
-import com.historialclinico.historial.persistence.mapper.MedicalRecord.AppointmentMapper;
+import com.historialclinico.historial.persistence.mapper.medicalRecord.AppointmentMapper;
 import java.util.List;
 import javax.xml.transform.Source;
 import org.mapstruct.InheritInverseConfiguration;

@@ -5,7 +5,7 @@ import com.historialclinico.historial.domain.dto.medicalRecord.ClinicDTO;
 import com.historialclinico.historial.domain.repositoryDTO.medicalRecord.ClinicRepositoryDTO;
 import com.historialclinico.historial.persistence.crud.medicalRecord.ClinicCrud;
 import com.historialclinico.historial.persistence.entity.medicalRecord.Clinic;
-import com.historialclinico.historial.persistence.mapper.MedicalRecord.ClinicMapper;
+import com.historialclinico.historial.persistence.mapper.medicalRecord.ClinicMapper;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

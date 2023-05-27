@@ -2,7 +2,8 @@
 package com.historialclinico.historial.persistence.mapper.address;
 
 import com.historialclinico.historial.domain.dto.address.DepartmentDTO;
-import com.historialclinico.historial.persistence.entity.person.address.Department;
+import com.historialclinico.historial.persistence.entity.address.Department;
+
 import java.util.List;
 import org.hibernate.annotations.Target;
 import org.mapstruct.InheritInverseConfiguration;

@@ -4,7 +4,7 @@ package com.historialclinico.historial.persistence.repository.Address;
 import com.historialclinico.historial.domain.dto.address.AddressDTO;
 import com.historialclinico.historial.domain.repositoryDTO.address.AddressRepositoryDTO;
 import com.historialclinico.historial.persistence.crud.address.AddressCrudRepository;
-import com.historialclinico.historial.persistence.entity.person.address.Address;
+import com.historialclinico.historial.persistence.entity.address.Address;
 import com.historialclinico.historial.persistence.mapper.address.AddressMapper;
 import java.util.List;
 import java.util.Optional;

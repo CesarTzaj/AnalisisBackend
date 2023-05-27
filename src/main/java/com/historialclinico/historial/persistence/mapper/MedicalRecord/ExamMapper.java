@@ -1,5 +1,5 @@
 
-package com.historialclinico.historial.persistence.mapper.MedicalRecord;
+package com.historialclinico.historial.persistence.mapper.medicalRecord;
 
 import com.historialclinico.historial.domain.dto.medicalRecord.ExamDTO;
 import com.historialclinico.historial.persistence.entity.medicalRecord.Exam;

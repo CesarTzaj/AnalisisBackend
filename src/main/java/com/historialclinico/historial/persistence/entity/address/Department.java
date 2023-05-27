@@ -1,6 +1,7 @@
 
-package com.historialclinico.historial.persistence.entity.person.address;
+package com.historialclinico.historial.persistence.entity.address;
 
+import com.historialclinico.historial.persistence.entity.address.Town;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

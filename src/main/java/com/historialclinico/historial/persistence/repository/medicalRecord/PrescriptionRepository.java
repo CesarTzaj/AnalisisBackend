@@ -5,7 +5,7 @@ import com.historialclinico.historial.domain.dto.medicalRecord.PrescriptionDTO;
 import com.historialclinico.historial.domain.repositoryDTO.medicalRecord.PrescriptionRepositoryDTO;
 import com.historialclinico.historial.persistence.crud.medicalRecord.PrescriptionCrud;
 import com.historialclinico.historial.persistence.entity.medicalRecord.Prescription;
-import com.historialclinico.historial.persistence.mapper.MedicalRecord.PrescriptionMapper;
+import com.historialclinico.historial.persistence.mapper.medicalRecord.PrescriptionMapper;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

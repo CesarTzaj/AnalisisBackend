@@ -2,6 +2,7 @@
 package com.historialclinico.historial.domain.service.address;
 
 import com.historialclinico.historial.domain.dto.address.DepartmentDTO;
+import com.historialclinico.historial.domain.dto.address.TownDTO;
 import com.historialclinico.historial.domain.repositoryDTO.address.DepartmentRepositoryDTO;
 import java.util.List;
 import java.util.Optional;
@@ -17,7 +18,8 @@ public class DepartmentService {
     public List<DepartmentDTO> getAll(){
         return department.findByOrderByDepartment();
     }
-    public Optional<DepartmentDTO> finById(int id){
-        return department.findById(id);
+    
+    public List<TownDTO> getByDepId(int id){
+        return department.findByDepId(id);
     }
 }

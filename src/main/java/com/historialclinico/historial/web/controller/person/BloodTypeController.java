@@ -12,13 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("blood")
 public class BloodTypeController {
     
     @Autowired
     private BloodTypeService service;
     
-    @GetMapping("all")
+    @GetMapping("blood")
     public ResponseEntity<List<BloodTypeDTO>> getAll(){
         return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }

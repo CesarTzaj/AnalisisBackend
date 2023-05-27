@@ -5,7 +5,7 @@ import com.historialclinico.historial.domain.dto.medicalRecord.AppointmentDTO;
 import com.historialclinico.historial.domain.repositoryDTO.medicalRecord.AppointmentRepositoryDTO;
 import com.historialclinico.historial.persistence.crud.medicalRecord.AppointmentCrud;
 import com.historialclinico.historial.persistence.entity.medicalRecord.Appointment;
-import com.historialclinico.historial.persistence.mapper.MedicalRecord.AppointmentMapper;
+import com.historialclinico.historial.persistence.mapper.medicalRecord.AppointmentMapper;
 import java.sql.Date;
 
 import java.util.List;

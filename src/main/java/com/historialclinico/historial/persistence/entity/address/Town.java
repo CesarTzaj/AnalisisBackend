@@ -1,5 +1,7 @@
 
-package com.historialclinico.historial.persistence.entity.person.address;
+package com.historialclinico.historial.persistence.entity.address;
+
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,8 +10,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import java.util.List;
 
 @Entity
 @Table(name = "municipio")
@@ -22,10 +26,10 @@ public class Town {
     @Column(name = "depid")
     private int departmentId;
     
-    @OneToOne(mappedBy = "town")
-    private Address address;
+    @OneToMany(mappedBy = "town")
+    private List<Address> address;
     
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "depid", updatable = false, insertable = false)
     private Department department;
 
@@ -53,13 +57,14 @@ public class Town {
         this.departmentId = departmentId;
     }
 
-    public Address getAddress() {
+    public List<Address> getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(List<Address> address) {
         this.address = address;
     }
+
 
     public Department getDepartment() {
         return department;

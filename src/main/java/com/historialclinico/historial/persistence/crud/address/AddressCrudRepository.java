@@ -1,7 +1,8 @@
 
 package com.historialclinico.historial.persistence.crud.address;
 
-import com.historialclinico.historial.persistence.entity.person.address.Address;
+
+import com.historialclinico.historial.persistence.entity.address.Address;
 import org.springframework.data.repository.CrudRepository;
 
 
