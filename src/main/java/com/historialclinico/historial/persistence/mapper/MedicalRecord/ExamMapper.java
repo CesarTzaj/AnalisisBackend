@@ -7,13 +7,14 @@ import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {ExamTypeMapper.class})
 public interface ExamMapper {
     
-    @Mapping(source = "examType", target = "exam")
+    
     ExamDTO toExamDTO(Exam exam);
     
     @InheritInverseConfiguration
     @Mapping(target = "consult", ignore = true)
+    @Mapping(target = "examType", ignore = true)        
     Exam toExam(ExamDTO examDTO);
 }

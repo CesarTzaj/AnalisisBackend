@@ -3,10 +3,11 @@ package com.historialclinico.historial.domain.dto.medicalRecord;
 public class PrescriptionDTO {
 
     private Integer id;
-    private String drug;
+    private int drugId;
     private int dosage;
-    private String comentario;
+    private String comment;
     private Integer consultaId;
+    private DrugDTO drug;
 
     public Integer getId() {
         return id;
@@ -16,12 +17,12 @@ public class PrescriptionDTO {
         this.id = id;
     }
 
-    public String getDrug() {
-        return drug;
+    public int getDrugId() {
+        return drugId;
     }
 
-    public void setDrug(String drug) {
-        this.drug = drug;
+    public void setDrugId(int drugId) {
+        this.drugId = drugId;
     }
 
     public int getDosage() {
@@ -32,6 +33,15 @@ public class PrescriptionDTO {
         this.dosage = dosage;
     }
 
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+
     public Integer getConsultaId() {
         return consultaId;
     }
@@ -40,12 +50,14 @@ public class PrescriptionDTO {
         this.consultaId = consultaId;
     }
 
-    public String getComentario() {
-        return comentario;
+    public DrugDTO getDrug() {
+        return drug;
     }
 
-    public void setComentario(String comentario) {
-        this.comentario = comentario;
+    public void setDrug(DrugDTO drug) {
+        this.drug = drug;
     }
+
+    
     
 }

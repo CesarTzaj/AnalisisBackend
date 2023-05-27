@@ -1,13 +1,16 @@
 
 package com.historialclinico.historial.domain.dto.medicalRecord;
 
+import java.sql.Time;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 
 public class AppointmentDTO {
 
     private Integer id;
-    private String date;
+    private Date date;
     private String time;
     private long personaId;
     private List<ConsultDTO> consults;
@@ -24,11 +27,11 @@ public class AppointmentDTO {
         this.id = id;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

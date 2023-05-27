@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 
@@ -22,9 +23,8 @@ public class Prescription {
     private Integer id;
     
     @Column(name = "medicamentoid")
-    private String drug; 
-    @Column(name = "dosis")
-    private int dosage;
+    private int medicamentoId; 
+    private int dosis;
     private String comentario;
     @Column(name = "consultaid")
     private Integer consultaId;
@@ -32,6 +32,10 @@ public class Prescription {
     @ManyToOne
     @JoinColumn(name = "consultaid", insertable = false, updatable = false)
     private Consult consult;
+    
+    @OneToOne
+    @JoinColumn(name = "medicamentoid", insertable = false, updatable = false)
+    private Drug drug;
 
     public Integer getId() {
         return id;
@@ -41,20 +45,28 @@ public class Prescription {
         this.id = id;
     }
 
-    public String getDrug() {
-        return drug;
+    public int getMedicamentoId() {
+        return medicamentoId;
     }
 
-    public void setDrug(String drug) {
-        this.drug = drug;
+    public void setMedicamentoId(int medicamentoId) {
+        this.medicamentoId = medicamentoId;
     }
 
-    public int getDosage() {
-        return dosage;
+    public int getDosis() {
+        return dosis;
     }
 
-    public void setDosage(int dosage) {
-        this.dosage = dosage;
+    public void setDosis(int dosis) {
+        this.dosis = dosis;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
 
     public Integer getConsultaId() {
@@ -73,12 +85,13 @@ public class Prescription {
         this.consult = consult;
     }
 
-    public String getComentario() {
-        return comentario;
+    public Drug getDrug() {
+        return drug;
     }
 
-    public void setComentario(String comentario) {
-        this.comentario = comentario;
+    public void setDrug(Drug drug) {
+        this.drug = drug;
     }
+
     
 }

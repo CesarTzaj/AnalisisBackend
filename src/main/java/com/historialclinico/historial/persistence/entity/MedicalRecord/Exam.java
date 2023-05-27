@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,11 +17,10 @@ public class Exam {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "laboratorioid")
     private Integer id;
     
-    @Column(name = "tipo_laboratorio")
-    private String examType;
+    @Column(name = "laboratorioid")
+    private String examId;
     
     @Column(name = "consultaid", nullable = false )
     private Integer consultaId;
@@ -28,6 +28,10 @@ public class Exam {
     @ManyToOne
     @JoinColumn(name = "consultaid", insertable = false, updatable = false)
     private Consult consult;
+    
+    @OneToOne
+    @JoinColumn(name = "laboratorioid", insertable = false, updatable = false)
+    private ExamType examType;
 
     public Integer getId() {
         return id;
@@ -37,12 +41,12 @@ public class Exam {
         this.id = id;
     }
 
-    public String getExamType() {
-        return examType;
+    public String getExamId() {
+        return examId;
     }
 
-    public void setExamType(String examType) {
-        this.examType = examType;
+    public void setExamId(String examId) {
+        this.examId = examId;
     }
 
     public Integer getConsultaId() {
@@ -60,6 +64,15 @@ public class Exam {
     public void setConsult(Consult consult) {
         this.consult = consult;
     }
+
+    public ExamType getExamType() {
+        return examType;
+    }
+
+    public void setExamType(ExamType examType) {
+        this.examType = examType;
+    }
+
     
-    
+  
 }

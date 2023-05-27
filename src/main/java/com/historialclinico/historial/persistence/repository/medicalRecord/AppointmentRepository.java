@@ -6,6 +6,9 @@ import com.historialclinico.historial.domain.repositoryDTO.medicalRecord.Appoint
 import com.historialclinico.historial.persistence.crud.medicalRecord.AppointmentCrud;
 import com.historialclinico.historial.persistence.entity.medicalRecord.Appointment;
 import com.historialclinico.historial.persistence.mapper.MedicalRecord.AppointmentMapper;
+import java.sql.Date;
+
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -35,5 +38,19 @@ public class AppointmentRepository implements AppointmentRepositoryDTO{
     public void delete(int id) {
         crud.deleteById(id);
     }
+
+    @Override
+    public List<AppointmentDTO> getByDPi(long dpi) {
+        List<Appointment> appointment = (List<Appointment>) crud.findByPersonaIdOrderByDateDesc(dpi);
+        return mapper.toAppointmentDTOs(appointment);
+    }
+
+    @Override
+    public List<AppointmentDTO> getByDpiDateRagen(long dpi, Date start, Date end) {
+        List<Appointment> appointment = (List<Appointment>) crud.findByPersonaIdAndDateBetweenOrderByDateDesc(dpi, start, end);
+        return mapper.toAppointmentDTOs(appointment);
+    }
+
+ 
     
 }

@@ -3,8 +3,9 @@ package com.historialclinico.historial.domain.dto.medicalRecord;
 public class ExamDTO {
 
     private Integer id;
-    private String exam;
+    private String examId;
     private Integer consultaId;
+    private ExamTypeDTO examType;
 
     public Integer getId() {
         return id;
@@ -14,12 +15,12 @@ public class ExamDTO {
         this.id = id;
     }
 
-    public String getExam() {
-        return exam;
+    public String getExamId() {
+        return examId;
     }
 
-    public void setExam(String exam) {
-        this.exam = exam;
+    public void setExamId(String examId) {
+        this.examId = examId;
     }
 
     public Integer getConsultaId() {
@@ -29,5 +30,15 @@ public class ExamDTO {
     public void setConsultaId(Integer consultaId) {
         this.consultaId = consultaId;
     }
+
+    public ExamTypeDTO getExamType() {
+        return examType;
+    }
+
+    public void setExamType(ExamTypeDTO examType) {
+        this.examType = examType;
+    }
+
+
 
 }

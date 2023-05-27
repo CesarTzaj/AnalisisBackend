@@ -1,7 +1,8 @@
 
 package com.historialclinico.historial.persistence.entity.medicalRecord;
 
-import com.historialclinico.historial.persistence.entity.person.Person;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,8 +12,14 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+
+import java.sql.*;
+
+
 import java.util.List;
-import org.hibernate.annotations.CreationTimestamp;
+import java.util.TimeZone;
+import org.hibernate.annotations.TimeZoneStorage;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "cita")
@@ -23,9 +30,12 @@ public class Appointment {
     @Column(name = "citaid")
     private Integer id;
     
+    
     @Column(name = "fecha")
-    private String date;
+
+    private Date date;
     @Column(name = "hora")
+    
     private String time;
     
     @Column(name = "personaid")
@@ -52,11 +62,11 @@ public class Appointment {
         this.id = id;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
