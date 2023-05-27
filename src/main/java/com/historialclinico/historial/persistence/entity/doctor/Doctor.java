@@ -4,15 +4,8 @@ package com.historialclinico.historial.persistence.entity.doctor;
 
 import com.historialclinico.historial.persistence.entity.medicalRecord.Consult;
 import com.historialclinico.historial.persistence.entity.person.Person;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
 import java.util.List;
 
 @Entity

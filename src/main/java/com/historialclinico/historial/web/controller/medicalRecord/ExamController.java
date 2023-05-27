@@ -1,17 +1,14 @@
 
 package com.historialclinico.historial.web.controller.medicalRecord;
-
-import com.historialclinico.historial.domain.dto.medicalRecord.ExamDTO;
-import com.historialclinico.historial.domain.service.medicalRecord.ExamService;
+ 
+import com.historialclinico.historial.domain.dto.medicalRecord.*;
+import com.historialclinico.historial.domain.service.medicalRecord.*;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 
 @RestController
 @RequestMapping("exam")
@@ -19,6 +16,8 @@ public class ExamController {
     
     @Autowired
     private ExamService examService;
+    @Autowired
+    private DrugAndExamService labService;
     
     @PostMapping("save")
     public ResponseEntity<ExamDTO> save(@RequestBody ExamDTO examDTO){
@@ -32,5 +31,17 @@ public class ExamController {
         } else {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
+    }
+    
+    //Lab list and save methods
+    
+    @GetMapping("type")
+    public ResponseEntity<List<ExamTypeDTO>> getByLabName(@RequestParam String lab){
+        return new ResponseEntity<>(labService.getByLabName(lab), HttpStatus.OK);
+    }
+    
+    @PostMapping("type/save")
+    public ResponseEntity<ExamTypeDTO> saveLab(@RequestBody ExamTypeDTO examTypeDTO){
+        return new ResponseEntity<>(labService.saveLab(examTypeDTO), HttpStatus.CREATED);
     }
 }

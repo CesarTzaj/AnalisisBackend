@@ -2,15 +2,14 @@
 package com.historialclinico.historial.persistence.entity.medicalRecord;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
 
 @Entity
 @Table(name = "laboratori_tipo")
 public class ExamType {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
     private String laboratorio;

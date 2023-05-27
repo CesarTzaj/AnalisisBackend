@@ -13,4 +13,8 @@ public interface ExamTypeMapper {
     @Mapping(source = "laboratorio", target = "exam")
     ExamTypeDTO toExamTypeDTO(ExamType examType);
     List<ExamTypeDTO> toExamTypeDTOs(List<ExamType> examTypes);
+    
+    @InheritInverseConfiguration
+    @Mapping(target = "exam", ignore = true)
+    ExamType toExamType(ExamTypeDTO examTypeDTO);
 }

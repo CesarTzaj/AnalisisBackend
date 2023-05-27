@@ -1,22 +1,20 @@
 
 package com.historialclinico.historial.persistence.entity.medicalRecord;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "medicamentos")
 public class Drug {
     
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String medicamento;
     
-    @OneToOne(mappedBy = "drug")
-    private Prescription prescription;
+    @OneToMany(mappedBy = "drug")
+    private List<Prescription> prescription;
 
     public Integer getId() {
         return id;
@@ -34,12 +32,12 @@ public class Drug {
         this.medicamento = medicamento;
     }
 
-    public Prescription getPrescription() {
+    public List<Prescription> getPrescription() {
         return prescription;
     }
 
-    public void setPrescription(Prescription prescription) {
+    public void setPrescription(List<Prescription> prescription) {
         this.prescription = prescription;
     }
-    
+ 
 }

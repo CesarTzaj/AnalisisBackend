@@ -1,12 +1,7 @@
 
 package com.historialclinico.historial.persistence.entity.address;
 
-import com.historialclinico.historial.persistence.entity.address.Town;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
