@@ -4,6 +4,7 @@ import com.historialclinico.historial.persistence.entity.address.Address;
 import com.historialclinico.historial.persistence.entity.doctor.Doctor;
 
 import jakarta.persistence.*;
+import java.sql.Date;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class Person {
     @Column(name = "generoid")
     private Integer genero;
 
-    private Integer edad;
+    private Date edad;
 
     @Column(name = "primer_nombre")
     private String primerNombre;
@@ -70,13 +71,23 @@ public class Person {
         this.genero = genero;
     }
 
-    public Integer getEdad() {
+    public Date getEdad() {
         return edad;
     }
 
-    public void setEdad(Integer edad) {
+    public void setEdad(Date edad) {
         this.edad = edad;
     }
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+
+
 
     public String getPrimerNombre() {
         return primerNombre;

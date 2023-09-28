@@ -2,6 +2,7 @@ package com.historialclinico.historial.domain.dto.person;
 
 import com.historialclinico.historial.domain.dto.address.AddressDTO;
 import com.historialclinico.historial.domain.dto.medicalRecord.AppointmentDTO;
+import java.sql.Date;
 import java.util.List;
 
 public class PersonDTO {
@@ -12,7 +13,7 @@ public class PersonDTO {
     private String lastName;
     private String secLastName;
     private int gender;
-    private Integer age;
+    private Date age;
     private int bloodid; 
     private boolean status;
     private BloodTypeDTO bloodType;
@@ -70,13 +71,14 @@ public class PersonDTO {
         this.gender = gender;
     }
 
-    public Integer getAge() {
+    public Date getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(Date age) {
         this.age = age;
     }
+   
 
     public int getBloodid() {
         return bloodid;
